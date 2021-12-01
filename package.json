@@ -1,0 +1,19 @@
+{
+  "name": "foton-terminal",
+  "version": "0.0.1",
+  "description": "A CLI formatting tool",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon",
+    "start": "tsc && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Casper Tollefsen <casper.tollefsen@mobit.no>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  }
+}

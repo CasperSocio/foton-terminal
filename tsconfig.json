@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "",
+    "preserveConstEnums": true,
+    "target": "ES5",
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": [
+    "lib/index.ts"
+  ]
+}
