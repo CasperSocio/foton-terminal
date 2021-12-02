@@ -2,11 +2,11 @@
   "name": "foton-terminal",
   "version": "0.0.1",
   "description": "A CLI formatting tool",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "tsc && tsc index.ts",
+    "build": "tsc",
     "dev": "nodemon",
-    "start": "npm run build && node index.js",
+    "start": "npm run build && node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Casper Tollefsen <casper.tollefsen@mobit.no>",

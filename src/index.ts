@@ -1,4 +1,4 @@
-import Element from './lib/Element'
+import Element from './Element'
 
 const Foton = { Element }
 
