@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "lib",
+    "outDir": "dist",
     "preserveConstEnums": true,
-    "target": "ES5",
-    "skipLibCheck": true,
+    "target": "ES6",
     "strict": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/index.ts"
   ]
 }

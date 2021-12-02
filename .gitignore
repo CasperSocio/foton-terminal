@@ -1,4 +1,7 @@
-/node_modules/
 /build/
-test.*s
+/dist/
+/node_modules/
+.DS_Store
 .npmrc
+index.*s
+test.*s

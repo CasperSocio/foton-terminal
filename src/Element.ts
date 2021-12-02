@@ -23,7 +23,10 @@ export interface ElementProps {
   showLog: () => void
 }
 
-class Element implements ElementProps {
+/**
+ * Foton.Element
+ */
+export class Element implements ElementProps {
   private _content: string | string[]
   private _instructions: Instruction[]
   private _log: string[]
@@ -222,5 +225,3 @@ class Element implements ElementProps {
     this._instructions.sort((a, b) => a.sortPriority > b.sortPriority ? 1 : -1)
   }
 }
-
-export default Element
