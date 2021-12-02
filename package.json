@@ -1,5 +1,5 @@
 {
-  "name": "foton-terminal",
+  "name": "@caspersocio/foton-terminal",
   "version": "0.0.1",
   "description": "A CLI formatting tool",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
     "start": "npm run build && node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Casper Tollefsen <casper.tollefsen@mobit.no>",
+  "author": "CasperSocio",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.15",
