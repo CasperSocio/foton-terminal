@@ -4,9 +4,9 @@
   "description": "A CLI formatting tool",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc index.ts",
     "dev": "nodemon",
-    "start": "tsc && node index.js",
+    "start": "npm run build && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Casper Tollefsen <casper.tollefsen@mobit.no>",

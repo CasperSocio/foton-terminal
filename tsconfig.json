@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "",
+    "outDir": "lib",
     "preserveConstEnums": true,
     "target": "ES5",
     "skipLibCheck": true,
     "strict": true
   },
+  "exclude": [
+    "index.ts"
+  ],
   "include": [
-    "lib/index.ts"
-  ]
+    "src/**/*.ts"
+, "index.ts"  ]
 }

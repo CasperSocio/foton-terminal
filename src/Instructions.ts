@@ -1,12 +1,8 @@
 import {
   EUtilities
-} from './enums'
+} from './typings/enums'
+import { Instruction } from './typings/interfaces'
 
-export interface Instruction {
-  name: string
-  sortPriority: number
-  value?: string
-}
 interface InstructionsProps {
   [key: string]: Instruction
 }
