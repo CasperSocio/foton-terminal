@@ -5,8 +5,9 @@
     "moduleResolution": "node",
     "outDir": "lib",
     "preserveConstEnums": true,
-    "target": "ES5",
-    "strict": true
+    "removeComments": true,
+    "strict": true,
+    "target": "ES5"
   },
   "include": [
     "src/index.ts"
