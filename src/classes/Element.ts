@@ -3,9 +3,11 @@ import { EBackground, EForeground, EUtilities } from '../typings/enums'
 import { IInstruction, IStyle } from '../typings/interfaces'
 import { TLogPrefix, TTag } from '../typings/types'
 
-
 /**
- * Foton.Element
+ * The Foton.Element class.
+ * @author CasperSocio
+ * @version 0.0.1
+ * @since 0.0.1
  */
  export class Element {
   private _content: string | string[]

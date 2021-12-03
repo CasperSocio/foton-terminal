@@ -1,11 +1,16 @@
-import {
-  EUtilities
-} from './typings/enums'
+import { EUtilities } from './typings/enums'
 import { IInstruction } from './typings/interfaces'
 
 interface InstructionsProps {
   [key: string]: IInstruction
 }
+
+/**
+ * List of instructions available to the parser.
+ * @author CasperSocio
+ * @version 0.0.1
+ * @since 0.0.1
+ */
 export const Instructions: InstructionsProps = {
   'BACKGROUND_COLOR': {
     name: 'BACKGROUND_COLOR',
