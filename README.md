@@ -42,3 +42,5 @@ status.style = {
 
 status.print()
 ```
+
+<img width="388" alt="Screenshot 2021-12-03 at 14 25 50" src="https://user-images.githubusercontent.com/74550679/144610089-7c56f686-037c-448d-88f8-a92b2b8b047b.png">
