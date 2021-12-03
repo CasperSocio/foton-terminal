@@ -1,1 +1,3 @@
-export * as Element from './Element'
+import { Element } from './classes/Element'
+
+export default { Element }

@@ -1,12 +1,12 @@
 import {
   EUtilities
 } from './typings/enums'
-import { Instruction } from './typings/interfaces'
+import { IInstruction } from './typings/interfaces'
 
 interface InstructionsProps {
-  [key: string]: Instruction
+  [key: string]: IInstruction
 }
-const Instructions: InstructionsProps = {
+export const Instructions: InstructionsProps = {
   'BACKGROUND_COLOR': {
     name: 'BACKGROUND_COLOR',
     sortPriority: -3
@@ -67,5 +67,3 @@ const Instructions: InstructionsProps = {
     sortPriority: 0
   },
 }
-
-export default Instructions

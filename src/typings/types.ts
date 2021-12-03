@@ -1,8 +1,9 @@
 import {
-  List,
-  Paragraph
+  IElementList,
+  IElementParagraph
 } from './interfaces'
 
-export type Color = 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'
-export type LogPrefix = 'INS' | 'LOG' | 'PAR'
-export type TagProps = List | Paragraph
+export type TColor = 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'
+export type TLogPrefix = 'INS' | 'LOG' | 'PAR'
+export type TTag = 'ol' | 'p' | 'ul'
+export type TTagProps = IElementList | IElementParagraph

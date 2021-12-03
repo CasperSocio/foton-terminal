@@ -1,24 +1,24 @@
-import { Color } from './types'
+import { TColor } from './types'
 
-export interface Instruction {
+export interface IInstruction {
   name: string
   sortPriority: number
   value?: string
 }
 
-export interface List {
+export interface IElementList {
   content: string[]
   tag: 'ol' | 'ul'
 }
-export interface Paragraph {
+export interface IElementParagraph {
   content: string
   tag: 'p'
 }
 
-export interface Style {
-  backgroundColor?: Color
+export interface IStyle {
+  backgroundColor?: TColor
   border?: 'white'
-  color?: Color
+  color?: TColor
   listStyle?: 'none'
   margin?: number | [number, number]
   marginBottom?: number

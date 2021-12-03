@@ -1,59 +1,37 @@
-import {
-  EBackground, EForeground, EUtilities
-} from './typings/enums'
-import {
-  Instruction,
-  Style
-} from './typings/interfaces'
-import { LogPrefix, TagProps } from './typings/types'
-import Instructions from './Instructions'
+import { Instructions } from '../Instructions'
+import { EBackground, EForeground, EUtilities } from '../typings/enums'
+import { IInstruction, IStyle } from '../typings/interfaces'
+import { TLogPrefix, TTag } from '../typings/types'
 
-export interface ElementProps {
-  /**
-   * Add styling to element
-   */
-  style?: Style
-  /**
-   * Prints element to the console
-   */
-  print: () => void
-  /**
-   * Prints entire log to the console
-   */
-  showLog: () => void
-}
 
 /**
  * Foton.Element
  */
-export class Element implements ElementProps {
+ export class Element {
   private _content: string | string[]
-  private _instructions: Instruction[]
+  private _instructions: IInstruction[]
   private _log: string[]
-  private _style: Style
+  private _style: IStyle
   private _tag
 
-  constructor({
-    tag,
-    content
-  }: TagProps) {
-    this._content = content
+  constructor(tag: TTag) {
+    this._content = ''
     this._instructions = [Instructions.CONTENT]
     this._log = []
     this._style = {}
     this._tag = tag
+  }
 
-    // Add content to CONTENT node
-    if (typeof this._content === 'string') {
-      this._instructions[0].value = this._content
-    }
+  public set content(content: string) {
+    this._content = content
+    this._instructions[0].value = this._content
   }
 
   public get instructions() {
     return this._instructions
   }
 
-  public set style(rules: Style) {
+  public set style(rules: IStyle) {
     this.log('LOG', 'Setting new style rules...')
 
     this._style = rules
@@ -61,7 +39,7 @@ export class Element implements ElementProps {
     this.sortInstructions()
   }
 
-  private addInstruction(instruction: Instruction) {
+  private addInstruction(instruction: IInstruction) {
     this.log('INS', `Adding ${instruction.name}`)
     this._instructions.push(instruction)
   }
@@ -147,10 +125,10 @@ export class Element implements ElementProps {
     }
   }
 
-  private findAndRemoveInstructions(target: Instruction) {
+  private findAndRemoveInstructions(target: IInstruction) {
     this.log('LOG', `Find and remove ${target.name}...`)
 
-    let newInstructions: Instruction[] = []
+    let newInstructions: IInstruction[] = []
     this._instructions.map(instruction => {
       if (instruction.name !== target.name) {
         newInstructions.push(instruction)
@@ -159,7 +137,7 @@ export class Element implements ElementProps {
     this._instructions = newInstructions
   }
 
-  private log(prefix: LogPrefix, msg: string) {
+  private log(prefix: TLogPrefix, msg: string) {
     if (prefix === 'INS') {
       this._log.push(`${EForeground.yellow}[${prefix}] ${msg}${EUtilities.reset}`)
     } else {
