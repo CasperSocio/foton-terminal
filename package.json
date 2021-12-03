@@ -1,7 +1,7 @@
 {
   "name": "foton-terminal",
   "author": "CasperSocio <casper.tolefsen@mobit.no>",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "A CLI formatting tool",
   "keywords": [
     "CLI",
