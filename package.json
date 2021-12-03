@@ -12,7 +12,7 @@
     "Terminal",
     "Text"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon",
