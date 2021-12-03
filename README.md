@@ -28,7 +28,7 @@ greeting.print()
 ### Apply styling to element
 
 ```typescript
-import Foton from './lib/index'
+import Foton from 'foton-terminal'
 
 const status = new Foton.Element('p')
 status.content = 'Passing'
