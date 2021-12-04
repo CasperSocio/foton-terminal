@@ -1,7 +1,7 @@
 import { Instructions } from '../Instructions'
 import { EBackground, EForeground, EUtilities } from '../typings/enums'
 import { IInstruction, IStyle } from '../typings/interfaces'
-import { TLogPrefix, TTag } from '../typings/types'
+import { TContent, TLogPrefix, TTag } from '../typings/types'
 
 /**
  * The Foton.Element class.
@@ -10,7 +10,7 @@ import { TLogPrefix, TTag } from '../typings/types'
  * @since 0.0.1
  */
  export class Element {
-  private _content: string | string[]
+  private _content: TContent
   private _instructions: IInstruction[]
   private _log: string[]
   private _style: IStyle
@@ -18,15 +18,29 @@ import { TLogPrefix, TTag } from '../typings/types'
 
   constructor(tag: TTag) {
     this._content = ''
-    this._instructions = [Instructions.CONTENT]
+    this._instructions = []
     this._log = []
     this._style = {}
     this._tag = tag
   }
 
-  public set content(content: string) {
+  public set content(content: TContent) {
+    this.log('LOG', 'Adding element content...')
+    console.log(content)
+
     this._content = content
-    this._instructions[0].value = this._content
+    if (typeof content !== 'string') {
+      content.forEach(element => {
+        console.log(element)
+        let contentNode = Instructions.CONTENT
+        contentNode.value = element
+        this.addInstruction(contentNode)
+      })
+    } else {
+      let contentNode = Instructions.CONTENT
+      contentNode.value = content
+      this.addInstruction(contentNode)
+    }
   }
 
   public get instructions() {

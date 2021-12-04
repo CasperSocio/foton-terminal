@@ -3,6 +3,15 @@
   "author": "CasperSocio <casper.tolefsen@mobit.no>",
   "version": "0.0.1",
   "description": "A CLI formatting tool",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon",
+    "prepublishOnly": "npm run build",
+    "start": "npm run build && node lib/index.js",
+    "test": "npm run build && tsc test.ts && node test.js"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "keywords": [
     "CLI",
     "Command",
@@ -13,15 +22,6 @@
     "Text"
   ],
   "license": "MIT",
-  "scripts": {
-    "build": "tsc",
-    "dev": "nodemon",
-    "prepublishOnly": "npm run build",
-    "start": "npm run build && node lib/index.js",
-    "test": "tsc test.ts && node test.js"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "devDependencies": {
     "nodemon": "^2.0.15",
     "rollup-plugin-dts": "^4.0.1",

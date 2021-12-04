@@ -1,7 +1,7 @@
-import { TColor } from './types'
+import { TColor, TInstructionType } from './types'
 
 export interface IInstruction {
-  name: string
+  name: TInstructionType
   sortPriority: number
   value?: string
 }
