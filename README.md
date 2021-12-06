@@ -1,5 +1,7 @@
 # Photon Terminal
 
+(A re-release of Foton Terminal)
+
 Photon Terminal is a CLI formatting tool that structures output in a similar way to React elements.
 
 

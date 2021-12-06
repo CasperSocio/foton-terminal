@@ -1,4 +1,4 @@
-import { EUtilities } from '../typings/enums'
+import { StyleUtilities } from '../typings/enums'
 import { TInstructionType } from '../typings/types'
 
 export class Instruction {
@@ -27,7 +27,10 @@ export class Instruction {
 
   /**
    * Sets the sorting priority.
+   * @author CasperSocio
+   * @version 0.0.1
    * @returns The sorting priority
+   * @since 0.0.1
    * @private
    */
   private setSortPriority() {
@@ -45,6 +48,14 @@ export class Instruction {
     }
   }
 
+  /**
+   * Sets the instruction value.
+   * @author CasperSocio
+   * @version 0.0.1
+   * @returns The instruction value
+   * @since 0.0.1
+   * @private
+   */
   private setValue() {
     switch (this._value) {
       case 'MARGIN_BOTTOM':
@@ -53,7 +64,7 @@ export class Instruction {
       case 'MARGIN_RIGHT':
       case 'SPACE_AFTER':
       case 'SPACE_BEFORE': return '  '
-      case 'RESET': EUtilities.reset
+      case 'RESET': StyleUtilities.reset
       default: break
     }
   }

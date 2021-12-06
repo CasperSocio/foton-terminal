@@ -9,9 +9,9 @@ import { IInstruction, IStyleRules } from '../typings/interfaces'
 import { TContent, TLogPrefix, TTag } from '../typings/types'
 
 /**
- * The Foton.Element class.
+ * The Element class.
  * @author CasperSocio
- * @version 0.0.8
+ * @version 0.0.1
  * @since 0.0.1
  */
  export class Element {
@@ -51,8 +51,8 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Adds CONTENT nodes to instruction stack.
    * @author CasperSocio
-   * @version 0.0.8
-   * @since 0.0.8
+   * @version 0.0.1
+   * @since 0.0.1
    * @private
    */
   private addContent() {
@@ -74,9 +74,9 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Adds a new node to instruction stack.
    * @author CasperSocio
-   * @version 0.0.7
+   * @version 0.0.1
    * @param instruction Instruction to add
-   * @since 0.0.7
+   * @since 0.0.1
    * @private
    */
   private addInstruction(instruction: IInstruction) {
@@ -87,7 +87,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Adds styling instruction nodes to stack.
    * @author CasperSocio
-   * @version 0.0.8
+   * @version 0.0.1
    * @since 0.0.1
    * @private
    */
@@ -197,7 +197,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
    * Iterates through the instruction stack
    * and removes all matching nodes.
    * @author CasperSocio
-   * @version 0.0.7
+   * @version 0.0.1
    * @param target The instruction to remove
    * @since 0.0.1
    * @private
@@ -217,10 +217,10 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Adds a new log entry.
    * @author CasperSocio
-   * @version 0.0.8
+   * @version 0.0.1
    * @param prefix What type of log to use
    * @param msg The string message
-   * @since 0.0.7
+   * @since 0.0.1
    * @private
    */
   private log(prefix: TLogPrefix, msg: string) {
@@ -237,8 +237,8 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
    * Parses the instruction stack and
    * generates the final output string.
    * @author CasperSocio
-   * @version 0.0.8
-   * @since 0.0.7
+   * @version 0.0.1
+   * @since 0.0.1
    * @private
    */
   private parseInstructions() {
@@ -280,7 +280,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Prints the final output string.
    * @author CasperSocio
-   * @version 0.0.8
+   * @version 0.0.1
    * @since 0.0.1
    * @public
    */
@@ -294,8 +294,8 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
    * Resets the instruction stack.
    * Use before adding new style rules.
    * @author CasperSocio
-   * @version 0.0.8
-   * @since 0.0.8
+   * @version 0.0.1
+   * @since 0.0.1
    * @private
    */
   private resetInstructions() {
@@ -307,8 +307,8 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Prints all log entries.
    * @author CasperSocio
-   * @version 0.0.7
-   * @since 0.0.7
+   * @version 0.0.1
+   * @since 0.0.1
    * @public
    */
   public showLog() {
@@ -320,7 +320,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Sorts the instruction stack based 'sortPriority'.
    * @author CasperSocio
-   * @version 0.0.7
+   * @version 0.0.1
    * @since 0.0.1
    * @private
    */

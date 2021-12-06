@@ -6,9 +6,9 @@ interface InstructionsProps {
 }
 
 /**
- * List of instructions available to the parser.
+ * List of instructions available to the stack.
  * @author CasperSocio
- * @version 0.0.8
+ * @version 0.0.1
  * @since 0.0.1
  */
 export const Instructions: InstructionsProps = {
