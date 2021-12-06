@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.0.2
+
+### Features
+
+- Added Element content and style options in constructor.
+
 
 ## 0.0.1 (Dec 6, 2021)
 
