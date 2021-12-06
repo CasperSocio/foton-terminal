@@ -32,17 +32,17 @@ greeting.print()
 ```typescript
 import Photon from 'photon-terminal'
 
-const status = new Photon.Element('p')
-status.content = 'Passing'
-
-successStyle = new Photon.Style({
+const classSuccess = new Photon.Style({
   backgroundColor: 'green',
   color: 'black',
   margin: 2,
+  textDecoration: 'strong',
   textTransform: 'uppercase',
-})
+}).rules
 
-status.style = successStyle.rules
+const status = new Photon.Element('p')
+status.content = 'Passing'
+status.style = classSuccess
 
 status.print()
 ```
