@@ -1,4 +1,4 @@
-import { EUtilities } from './typings/enums'
+import { StyleTextDecoration, StyleUtilities } from './typings/enums'
 import { IInstruction } from './typings/interfaces'
 
 interface InstructionsProps {
@@ -8,17 +8,17 @@ interface InstructionsProps {
 /**
  * List of instructions available to the parser.
  * @author CasperSocio
- * @version 0.0.1
+ * @version 0.0.8
  * @since 0.0.1
  */
 export const Instructions: InstructionsProps = {
   'BACKGROUND_COLOR': {
     name: 'BACKGROUND_COLOR',
-    sortPriority: -3
+    sortPriority: -4
   },
   'COLOR': {
     name: 'COLOR',
-    sortPriority: -2
+    sortPriority: -3
   },
   'CONTENT': {
     name: 'CONTENT',
@@ -47,7 +47,7 @@ export const Instructions: InstructionsProps = {
   'RESET': {
     name: 'RESET',
     sortPriority: 2,
-    value: EUtilities.reset
+    value: StyleUtilities.reset
   },
   'SPACE_AFTER': {
     name: 'SPACE_AFTER',
@@ -56,8 +56,23 @@ export const Instructions: InstructionsProps = {
   },
   'SPACE_BEFORE': {
     name: 'SPACE_BEFORE',
-    sortPriority: -1,
+    sortPriority: -2,
     value: ' '
+  },
+  'TEXT_DECORATION_ITALIC': {
+    name: 'TEXT_DECORATION_ITALIC',
+    sortPriority: -1,
+    value: StyleTextDecoration.italic
+  },
+  'TEXT_DECORATION_STRONG': {
+    name: 'TEXT_DECORATION_STRONG',
+    sortPriority: -1,
+    value: StyleTextDecoration.strong
+  },
+  'TEXT_DECORATION_UNDERLINE': {
+    name: 'TEXT_DECORATION_UNDERLINE',
+    sortPriority: -1,
+    value: StyleTextDecoration.underline
   },
   'TEXT_TRANSFORM_CAPITALIZE': {
     name: 'TEXT_TRANSFORM_CAPITALIZE',

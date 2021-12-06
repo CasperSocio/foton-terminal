@@ -15,7 +15,7 @@ export interface IElementParagraph {
   tag: 'p'
 }
 
-export interface IStyle {
+export interface IStyleRules {
   backgroundColor?: TColor
   border?: 'white'
   color?: TColor
@@ -25,6 +25,6 @@ export interface IStyle {
   marginLeft?: number
   marginRight?: number
   marginTop?: number
-  textDecoration?: 'dim' | 'italic' | 'strong' | 'underline'
+  textDecoration?: 'italic' | 'strong' | 'underline'
   textTransform?: 'capitalize' | 'lowercase' | 'uppercase'
 }
