@@ -4,5 +4,6 @@
 .DS_Store
 .npmrc
 *.d.ts
+package-lock.json
 index.*s
 test.*s
