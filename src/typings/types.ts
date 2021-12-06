@@ -19,11 +19,14 @@ export type TInstructionType =
   | 'RESET'
   | 'SPACE_AFTER'
   | 'SPACE_BEFORE'
+  | 'TEXT_DECORATION_ITALIC'
+  | 'TEXT_DECORATION_STRONG'
+  | 'TEXT_DECORATION_UNDERLINE'
   | 'TEXT_TRANSFORM_CAPITALIZE'
   | 'TEXT_TRANSFORM_LOWERCASE'
   | 'TEXT_TRANSFORM_UPPERCASE'
 
-export type TLogPrefix = 'INS' | 'LOG' | 'PAR'
+export type TLogPrefix = 'ACT' | 'INS' | 'LOG' | 'PAR'
 
 /** The available element types */
 export type TTag = 'ol' | 'p' | 'ul'
