@@ -2,7 +2,6 @@ import { Instructions } from '../Instructions'
 import {
   StyleBackgroundColor,
   StyleColor,
-  StyleTextDecoration,
   StyleUtilities,
 } from '../typings/enums'
 import { IInstruction, IStyleRules } from '../typings/interfaces'
@@ -11,7 +10,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
 /**
  * The Element class.
  * @author CasperSocio
- * @version 0.0.1
+ * @version 0.0.2
  * @since 0.0.1
  */
  export class Element {
@@ -21,42 +20,33 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   private _style: IStyleRules
   private _tag
 
-  constructor(tag: TTag) {
-    this._content = ''
+  constructor(tag: TTag, content?: TContent, style?: IStyleRules) {
+    this._content = content || ''
     this._instructionStack = []
     this._log = []
-    this._style = {}
+    this._style = style || {}
     this._tag = tag
   }
 
   public set content(content: TContent) {
-    this.log('LOG', 'Adding element content...')
-
+    this.log('LOG', 'Setting new content')
     this._content = content
-    this.addContent()
-  }
-
-  public get instructions() {
-    return this._instructionStack
   }
 
   public set style(rules: IStyleRules) {
-    this.log('LOG', 'Setting new style rules...')
-
+    this.log('LOG', 'Setting new style rules')
     this._style = rules
-    this.applyStyling()
-    this.sortInstructions()
   }
 
   /**
    * Adds CONTENT nodes to instruction stack.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.2
    * @since 0.0.1
    * @private
    */
   private addContent() {
-    this.log('LOG', 'Adding element instructions...')
+    this.log('ACT', 'ADDING CONTENT [START]')
 
     if (typeof this._content !== 'string') {
       this._content.forEach(element => {
@@ -69,31 +59,31 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
       contentNode.value = this._content
       this.addInstruction(contentNode)
     }
+    this.log('ACT', 'ADDING CONTENT [END]')
   }
 
   /**
    * Adds a new node to instruction stack.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.2
    * @param instruction Instruction to add
    * @since 0.0.1
    * @private
    */
   private addInstruction(instruction: IInstruction) {
-    this.log('INS', `Adding ${instruction.name}`)
     this._instructionStack.push(instruction)
+    this.log('INS', `Added ${instruction.name} node`)
   }
 
   /**
    * Adds styling instruction nodes to stack.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.2
    * @since 0.0.1
    * @private
    */
   private applyStyling() {
-    this.log('LOG', 'Applying styles...')
-    this.resetInstructions()
+    this.log('ACT', 'APPLYING STYLES [START]')
 
     // Background-color
     if (this._style.backgroundColor) {
@@ -191,6 +181,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
           break
       }
     }
+    this.log('ACT', 'APPLYING STYLES [END]')
   }
 
   /**
@@ -280,12 +271,16 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   /**
    * Prints the final output string.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.2
    * @since 0.0.1
    * @public
    */
   public print() {
     this.log('ACT', 'PRINTING ELEMENT [START]')
+    this.resetInstructions()
+    this.addContent()
+    this.applyStyling()
+    this.sortInstructions()
     console.log(this.parseInstructions())
     this.log('ACT', 'PRINTING ELEMENT [END]')
   }
@@ -301,7 +296,20 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   private resetInstructions() {
     this.log('LOG', 'Resetting instructions...')
     this._instructionStack = []
-    this.addContent()
+  }
+
+  /**
+   * Prints instruction stack.
+   * @author CasperSocio
+   * @version 0.0.2
+   * @since 0.0.2
+   * @public
+   */
+  public showInstructions() {
+    console.log(this._instructionStack)
+    /* this._instructionStack.forEach(instruction => {
+      console.log(instruction)
+    }) */
   }
 
   /**

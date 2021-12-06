@@ -1,4 +1,4 @@
-import { StyleUtilities } from '../typings/enums'
+import { StyleTextDecoration, StyleUtilities } from '../typings/enums'
 import { TInstructionType } from '../typings/types'
 
 export class Instruction {
@@ -6,10 +6,10 @@ export class Instruction {
   private _sortPriority: number
   private _value: string
 
-  constructor(name: TInstructionType) {
+  constructor(name: TInstructionType, value?: string) {
     this._name = name
     this._sortPriority = this.setSortPriority()
-    this._value = this.setValue()
+    this._value = value || this.setValue()
   }
 
   get name() {
@@ -28,22 +28,25 @@ export class Instruction {
   /**
    * Sets the sorting priority.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.2
    * @returns The sorting priority
    * @since 0.0.1
    * @private
    */
   private setSortPriority() {
     switch (this._name) {
-      case 'BACKGROUND_COLOR': return -3
-      case 'COLOR': return -2
+      case 'BACKGROUND_COLOR': return -4
+      case 'COLOR': return -3
       case 'MARGIN_BOTTOM': return 10
       case 'MARGIN_LEFT': return -9
       case 'MARGIN_RIGHT': return 9
       case 'MARGIN_TOP': return -10
       case 'RESET': return 2
       case 'SPACE_AFTER': return 1
-      case 'SPACE_BEFORE': return -1
+      case 'SPACE_BEFORE': return -2
+      case 'TEXT_DECORATION_ITALIC':
+      case 'TEXT_DECORATION_STRONG':
+      case 'TEXT_DECORATION_UNDERLINE': return -1
       default: return 0
     }
   }
@@ -51,21 +54,24 @@ export class Instruction {
   /**
    * Sets the instruction value.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.2
    * @returns The instruction value
    * @since 0.0.1
    * @private
    */
   private setValue() {
-    switch (this._value) {
+    switch (this._name) {
       case 'MARGIN_BOTTOM':
-      case 'MARGIN_TOP': '\n'
+      case 'MARGIN_TOP': return '\n'
       case 'MARGIN_LEFT':
-      case 'MARGIN_RIGHT':
+      case 'MARGIN_RIGHT': return '  '
       case 'SPACE_AFTER':
-      case 'SPACE_BEFORE': return '  '
-      case 'RESET': StyleUtilities.reset
-      default: break
+      case 'SPACE_BEFORE': return ' '
+      case 'RESET': return StyleUtilities.reset
+      case 'TEXT_DECORATION_ITALIC': return StyleTextDecoration.italic
+      case 'TEXT_DECORATION_STRONG': return StyleTextDecoration.strong
+      case 'TEXT_DECORATION_UNDERLINE': return StyleTextDecoration.underline
+      default: return ''
     }
   }
 }
