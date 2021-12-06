@@ -42,7 +42,7 @@ successStyle = new Photon.Style({
   textTransform: 'uppercase',
 })
 
-status.style = successStyle
+status.style = successStyle.rules
 
 status.print()
 ```
