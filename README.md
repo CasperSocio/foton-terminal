@@ -44,3 +44,55 @@ status.print()
 ```
 
 <img width="388" alt="Screenshot 2021-12-03 at 14 25 50" src="https://user-images.githubusercontent.com/74550679/144610089-7c56f686-037c-448d-88f8-a92b2b8b047b.png">
+
+
+## Foton.Element.style
+
+### Background color
+
+Sets the text background color.
+
+**`backgroundColor:`**
+
+- `'black'`
+- `'blue'`
+- `'green'`
+- `'red'`
+- `'white'`
+- `'yellow'`
+
+
+### Color
+
+Sets the text color.
+
+**`color:`**
+
+- `'black'`
+- `'blue'`
+- `'green'`
+- `'red'`
+- `'white'`
+- `'yellow'`
+
+
+### Text decoration
+
+Alter the visual appearance of text.
+
+**`textDecoration:`**
+
+- `'italic'` - Italic or cursive
+- `'strong'` - Bold or increased brightness
+- `'underline'`
+
+
+### Text transform
+
+Alter the output of text.
+
+**`textTransform:`**
+
+- `'capitalize'` - Capitalize every word in a string
+- `'lowercase'` - Make every word lowercase
+- `'uppercase'` - Make every word uppercase
