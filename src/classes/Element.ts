@@ -1,24 +1,29 @@
 import { Instructions } from '../Instructions'
-import { EBackground, EForeground, EUtilities } from '../typings/enums'
-import { IInstruction, IStyle } from '../typings/interfaces'
+import {
+  StyleBackgroundColor,
+  StyleColor,
+  StyleTextDecoration,
+  StyleUtilities,
+} from '../typings/enums'
+import { IInstruction, IStyleRules } from '../typings/interfaces'
 import { TContent, TLogPrefix, TTag } from '../typings/types'
 
 /**
  * The Foton.Element class.
  * @author CasperSocio
- * @version 0.0.1
+ * @version 0.0.8
  * @since 0.0.1
  */
  export class Element {
   private _content: TContent
-  private _instructions: IInstruction[]
+  private _instructionStack: IInstruction[]
   private _log: string[]
-  private _style: IStyle
+  private _style: IStyleRules
   private _tag
 
   constructor(tag: TTag) {
     this._content = ''
-    this._instructions = []
+    this._instructionStack = []
     this._log = []
     this._style = {}
     this._tag = tag
@@ -26,28 +31,16 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
 
   public set content(content: TContent) {
     this.log('LOG', 'Adding element content...')
-    console.log(content)
 
     this._content = content
-    if (typeof content !== 'string') {
-      content.forEach(element => {
-        console.log(element)
-        let contentNode = Instructions.CONTENT
-        contentNode.value = element
-        this.addInstruction(contentNode)
-      })
-    } else {
-      let contentNode = Instructions.CONTENT
-      contentNode.value = content
-      this.addInstruction(contentNode)
-    }
+    this.addContent()
   }
 
   public get instructions() {
-    return this._instructions
+    return this._instructionStack
   }
 
-  public set style(rules: IStyle) {
+  public set style(rules: IStyleRules) {
     this.log('LOG', 'Setting new style rules...')
 
     this._style = rules
@@ -55,18 +48,57 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
     this.sortInstructions()
   }
 
-  private addInstruction(instruction: IInstruction) {
-    this.log('INS', `Adding ${instruction.name}`)
-    this._instructions.push(instruction)
+  /**
+   * Adds CONTENT nodes to instruction stack.
+   * @author CasperSocio
+   * @version 0.0.8
+   * @since 0.0.8
+   * @private
+   */
+  private addContent() {
+    this.log('LOG', 'Adding element instructions...')
+
+    if (typeof this._content !== 'string') {
+      this._content.forEach(element => {
+        let contentNode = Instructions.CONTENT
+        contentNode.value = element
+        this.addInstruction(contentNode)
+      })
+    } else {
+      let contentNode = Instructions.CONTENT
+      contentNode.value = this._content
+      this.addInstruction(contentNode)
+    }
   }
 
+  /**
+   * Adds a new node to instruction stack.
+   * @author CasperSocio
+   * @version 0.0.7
+   * @param instruction Instruction to add
+   * @since 0.0.7
+   * @private
+   */
+  private addInstruction(instruction: IInstruction) {
+    this.log('INS', `Adding ${instruction.name}`)
+    this._instructionStack.push(instruction)
+  }
+
+  /**
+   * Adds styling instruction nodes to stack.
+   * @author CasperSocio
+   * @version 0.0.8
+   * @since 0.0.1
+   * @private
+   */
   private applyStyling() {
     this.log('LOG', 'Applying styles...')
+    this.resetInstructions()
 
     // Background-color
     if (this._style.backgroundColor) {
       let bgStyle = Instructions.BACKGROUND_COLOR
-      bgStyle.value = EBackground[this._style.backgroundColor]
+      bgStyle.value = StyleBackgroundColor[this._style.backgroundColor]
       this.addInstruction(bgStyle)
       this.addInstruction(Instructions.SPACE_BEFORE)
       this.addInstruction(Instructions.SPACE_AFTER)
@@ -76,7 +108,7 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
     // Color
     if (this._style.color) {
       let colorStyle = Instructions.COLOR
-      colorStyle.value = EForeground[this._style.color]
+      colorStyle.value = StyleColor[this._style.color]
       this.addInstruction(colorStyle)
       this.findAndRemoveInstructions(Instructions.RESET)
       this.addInstruction(Instructions.RESET)
@@ -120,6 +152,26 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
       }
     }
 
+    // Text-decoration
+    if (this._style.textDecoration) {
+      switch (this._style.textDecoration) {
+        case 'italic':
+          this.addInstruction(Instructions.TEXT_DECORATION_ITALIC)
+          break
+
+        case 'strong':
+          this.addInstruction(Instructions.TEXT_DECORATION_STRONG)
+          break
+
+        case 'underline':
+          this.addInstruction(Instructions.TEXT_DECORATION_UNDERLINE)
+          break
+      
+        default:
+          break
+      }
+    }
+
     // Text-transform
     if (this._style.textTransform) {
       switch (this._style.textTransform) {
@@ -141,47 +193,70 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
     }
   }
 
+  /**
+   * Iterates through the instruction stack
+   * and removes all matching nodes.
+   * @author CasperSocio
+   * @version 0.0.7
+   * @param target The instruction to remove
+   * @since 0.0.1
+   * @private
+   */
   private findAndRemoveInstructions(target: IInstruction) {
     this.log('LOG', `Find and remove ${target.name}...`)
 
     let newInstructions: IInstruction[] = []
-    this._instructions.map(instruction => {
+    this._instructionStack.map(instruction => {
       if (instruction.name !== target.name) {
         newInstructions.push(instruction)
       }
     })
-    this._instructions = newInstructions
+    this._instructionStack = newInstructions
   }
 
+  /**
+   * Adds a new log entry.
+   * @author CasperSocio
+   * @version 0.0.8
+   * @param prefix What type of log to use
+   * @param msg The string message
+   * @since 0.0.7
+   * @private
+   */
   private log(prefix: TLogPrefix, msg: string) {
     if (prefix === 'INS') {
-      this._log.push(`${EForeground.yellow}[${prefix}] ${msg}${EUtilities.reset}`)
+      this._log.push(`${StyleColor.yellow}[${prefix}] ${msg}${StyleUtilities.reset}`)
+    } else if (prefix === 'ACT') {
+      this._log.push(`${StyleColor.blue}[${prefix}] ${msg}${StyleUtilities.reset}`)
     } else {
       this._log.push(`[${prefix}] ${msg}`)
     }
   }
 
   /**
-   * Parses the list of instructions and generates the final output string
+   * Parses the instruction stack and
+   * generates the final output string.
+   * @author CasperSocio
+   * @version 0.0.8
+   * @since 0.0.7
+   * @private
    */
   private parseInstructions() {
-    this.log('LOG', 'Parsing...')
+    this.log('ACT', 'PARSING INSTRUCTIONS [START]')
     let output: string[] = []
 
-    // Iterate through instruction list
-    this._instructions.forEach(instruction => {
-      this.log('PAR', `${instruction.name}: Running...`)
+    // Iterate through the instruction stack
+    this._instructionStack.forEach(instruction => {
+      this.log('PAR', `${instruction.name}`)
 
       if (typeof this._content === 'string') {
         switch (instruction.name) {
           case 'CONTENT':
             output.push(this._content)
-            this.log('PAR', 'CONTENT: Success')
             break
 
           case 'TEXT_TRANSFORM_CAPITALIZE':
             this._content = this._content.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')
-            this.log('INS', 'TEXT_TRANSFORM_CAPITALIZE: Success')
             break
 
           case 'TEXT_TRANSFORM_LOWERCASE':
@@ -198,13 +273,44 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
         }
       }
     })
+    this.log('ACT', 'PARSING INSTRUCTIONS [END]')
     return output.join('')
   }
 
+  /**
+   * Prints the final output string.
+   * @author CasperSocio
+   * @version 0.0.8
+   * @since 0.0.1
+   * @public
+   */
   public print() {
+    this.log('ACT', 'PRINTING ELEMENT [START]')
     console.log(this.parseInstructions())
+    this.log('ACT', 'PRINTING ELEMENT [END]')
   }
 
+  /**
+   * Resets the instruction stack.
+   * Use before adding new style rules.
+   * @author CasperSocio
+   * @version 0.0.8
+   * @since 0.0.8
+   * @private
+   */
+  private resetInstructions() {
+    this.log('LOG', 'Resetting instructions...')
+    this._instructionStack = []
+    this.addContent()
+  }
+
+  /**
+   * Prints all log entries.
+   * @author CasperSocio
+   * @version 0.0.7
+   * @since 0.0.7
+   * @public
+   */
   public showLog() {
     this._log.forEach(log => {
       console.log(log)
@@ -212,10 +318,14 @@ import { TContent, TLogPrefix, TTag } from '../typings/types'
   }
 
   /**
-   * Sorts the list of instructions according to 'sortPriority'
+   * Sorts the instruction stack based 'sortPriority'.
+   * @author CasperSocio
+   * @version 0.0.7
+   * @since 0.0.1
+   * @private
    */
   private sortInstructions() {
     this.log('LOG', 'Sorting instructions...')
-    this._instructions.sort((a, b) => a.sortPriority > b.sortPriority ? 1 : -1)
+    this._instructionStack.sort((a, b) => a.sortPriority > b.sortPriority ? 1 : -1)
   }
 }
