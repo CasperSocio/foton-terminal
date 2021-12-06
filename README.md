@@ -35,12 +35,14 @@ import Photon from 'photon-terminal'
 const status = new Photon.Element('p')
 status.content = 'Passing'
 
-status.style = {
+successStyle = new Photon.Style({
   backgroundColor: 'green',
   color: 'black',
   margin: 2,
   textTransform: 'uppercase',
-}
+})
+
+status.style = successStyle
 
 status.print()
 ```
