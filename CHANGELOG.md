@@ -8,7 +8,9 @@
 
 ### Changes
 
+- Implemented the `Instruction` class.
 - Improved `Element` logs.
+
 
 ## 0.0.1 (Dec 6, 2021)
 

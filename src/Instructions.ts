@@ -1,4 +1,4 @@
-import { StyleTextDecoration, StyleUtilities } from './typings/enums'
+import { Instruction } from './classes/Instruction'
 import { IInstruction } from './typings/interfaces'
 
 interface InstructionsProps {
@@ -8,82 +8,24 @@ interface InstructionsProps {
 /**
  * List of instructions available to the stack.
  * @author CasperSocio
- * @version 0.0.1
+ * @version 0.0.2
  * @since 0.0.1
  */
 export const Instructions: InstructionsProps = {
-  'BACKGROUND_COLOR': {
-    name: 'BACKGROUND_COLOR',
-    sortPriority: -4
-  },
-  'COLOR': {
-    name: 'COLOR',
-    sortPriority: -3
-  },
-  'CONTENT': {
-    name: 'CONTENT',
-    sortPriority: 0
-  },
-  'MARGIN_BOTTOM': {
-    name: 'MARGIN_BOTTOM',
-    sortPriority: 10,
-    value: '\n'
-  },
-  'MARGIN_LEFT': {
-    name: 'MARGIN_LEFT',
-    sortPriority: -9,
-    value: '  '
-  },
-  'MARGIN_RIGHT': {
-    name: 'MARGIN_RIGHT',
-    sortPriority: 9,
-    value: '  '
-  },
-  'MARGIN_TOP': {
-    name: 'MARGIN_TOP',
-    sortPriority: -10,
-    value: '\n'
-  },
-  'RESET': {
-    name: 'RESET',
-    sortPriority: 2,
-    value: StyleUtilities.reset
-  },
-  'SPACE_AFTER': {
-    name: 'SPACE_AFTER',
-    sortPriority: 1,
-    value: ' '
-  },
-  'SPACE_BEFORE': {
-    name: 'SPACE_BEFORE',
-    sortPriority: -2,
-    value: ' '
-  },
-  'TEXT_DECORATION_ITALIC': {
-    name: 'TEXT_DECORATION_ITALIC',
-    sortPriority: -1,
-    value: StyleTextDecoration.italic
-  },
-  'TEXT_DECORATION_STRONG': {
-    name: 'TEXT_DECORATION_STRONG',
-    sortPriority: -1,
-    value: StyleTextDecoration.strong
-  },
-  'TEXT_DECORATION_UNDERLINE': {
-    name: 'TEXT_DECORATION_UNDERLINE',
-    sortPriority: -1,
-    value: StyleTextDecoration.underline
-  },
-  'TEXT_TRANSFORM_CAPITALIZE': {
-    name: 'TEXT_TRANSFORM_CAPITALIZE',
-    sortPriority: 0
-  },
-  'TEXT_TRANSFORM_LOWERCASE': {
-    name: 'TEXT_TRANSFORM_LOWERCASE',
-    sortPriority: 0
-  },
-  'TEXT_TRANSFORM_UPPERCASE': {
-    name: 'TEXT_TRANSFORM_UPPERCASE',
-    sortPriority: 0
-  },
+  'BACKGROUND_COLOR': new Instruction('BACKGROUND_COLOR'),
+  'COLOR': new Instruction('COLOR'),
+  'CONTENT': new Instruction('CONTENT'),
+  'MARGIN_BOTTOM': new Instruction('MARGIN_BOTTOM'),
+  'MARGIN_LEFT': new Instruction('MARGIN_LEFT'),
+  'MARGIN_RIGHT': new Instruction('MARGIN_RIGHT'),
+  'MARGIN_TOP': new Instruction('MARGIN_TOP'),
+  'RESET': new Instruction('RESET'),
+  'SPACE_AFTER': new Instruction('SPACE_AFTER'),
+  'SPACE_BEFORE': new Instruction('SPACE_BEFORE'),
+  'TEXT_DECORATION_ITALIC': new Instruction('TEXT_DECORATION_ITALIC'),
+  'TEXT_DECORATION_STRONG': new Instruction('TEXT_DECORATION_STRONG'),
+  'TEXT_DECORATION_UNDERLINE': new Instruction('TEXT_DECORATION_UNDERLINE'),
+  'TEXT_TRANSFORM_CAPITALIZE': new Instruction('TEXT_TRANSFORM_CAPITALIZE'),
+  'TEXT_TRANSFORM_LOWERCASE': new Instruction('TEXT_TRANSFORM_LOWERCASE'),
+  'TEXT_TRANSFORM_UPPERCASE': new Instruction('TEXT_TRANSFORM_UPPERCASE'),
 }

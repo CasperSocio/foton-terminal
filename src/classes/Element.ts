@@ -2,7 +2,6 @@ import { Instructions } from '../Instructions'
 import {
   StyleBackgroundColor,
   StyleColor,
-  StyleTextDecoration,
   StyleUtilities,
 } from '../typings/enums'
 import { IInstruction, IStyleRules } from '../typings/interfaces'
