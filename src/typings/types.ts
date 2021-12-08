@@ -8,7 +8,9 @@ export type TColor = 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'
 
 export type TContent = string | string[]
 
-export type TInstructionType =
+export type TElementType = IElementList | IElementParagraph
+
+export type TInstructionName =
   | 'BACKGROUND_COLOR'
   | 'COLOR'
   | 'CONTENT'
@@ -16,9 +18,9 @@ export type TInstructionType =
   | 'MARGIN_LEFT'
   | 'MARGIN_RIGHT'
   | 'MARGIN_TOP'
+  | 'PADDING_LEFT'
+  | 'PADDING_RIGHT'
   | 'RESET'
-  | 'SPACE_AFTER'
-  | 'SPACE_BEFORE'
   | 'TEXT_DECORATION_ITALIC'
   | 'TEXT_DECORATION_STRONG'
   | 'TEXT_DECORATION_UNDERLINE'
@@ -28,7 +30,7 @@ export type TInstructionType =
 
 export type TLogPrefix = 'ACT' | 'INS' | 'LOG' | 'PAR'
 
+export type TNumericRule = number | 'none' | undefined
+
 /** The available element types */
 export type TTag = 'ol' | 'p' | 'ul'
-
-export type TTagProps = IElementList | IElementParagraph

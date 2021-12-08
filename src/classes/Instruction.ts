@@ -1,12 +1,12 @@
 import { StyleTextDecoration, StyleUtilities } from '../typings/enums'
-import { TInstructionType } from '../typings/types'
+import { TInstructionName } from '../typings/types'
 
 export class Instruction {
-  private _name: TInstructionType
+  private _name: TInstructionName
   private _sortPriority: number
   private _value: string
 
-  constructor(name: TInstructionType, value?: string) {
+  constructor(name: TInstructionName, value?: string) {
     this._name = name
     this._sortPriority = this.setSortPriority()
     this._value = value || this.setValue()
@@ -28,7 +28,7 @@ export class Instruction {
   /**
    * Sets the sorting priority.
    * @author CasperSocio
-   * @version 0.0.2
+   * @version 0.0.3
    * @returns The sorting priority
    * @since 0.0.1
    * @private
@@ -41,12 +41,15 @@ export class Instruction {
       case 'MARGIN_LEFT': return -9
       case 'MARGIN_RIGHT': return 9
       case 'MARGIN_TOP': return -10
-      case 'RESET': return 2
-      case 'SPACE_AFTER': return 1
-      case 'SPACE_BEFORE': return -2
+      case 'RESET': return 3
+      case 'PADDING_LEFT': return -2
+      case 'PADDING_RIGHT': return 2
       case 'TEXT_DECORATION_ITALIC':
       case 'TEXT_DECORATION_STRONG':
       case 'TEXT_DECORATION_UNDERLINE': return -1
+      case 'TEXT_TRANSFORM_CAPITALIZE':
+      case 'TEXT_TRANSFORM_LOWERCASE':
+      case 'TEXT_TRANSFORM_UPPERCASE': return -20
       default: return 0
     }
   }
@@ -54,7 +57,7 @@ export class Instruction {
   /**
    * Sets the instruction value.
    * @author CasperSocio
-   * @version 0.0.2
+   * @version 0.0.3
    * @returns The instruction value
    * @since 0.0.1
    * @private
@@ -64,9 +67,9 @@ export class Instruction {
       case 'MARGIN_BOTTOM':
       case 'MARGIN_TOP': return '\n'
       case 'MARGIN_LEFT':
-      case 'MARGIN_RIGHT': return '  '
-      case 'SPACE_AFTER':
-      case 'SPACE_BEFORE': return ' '
+      case 'MARGIN_RIGHT':
+      case 'PADDING_LEFT':
+      case 'PADDING_RIGHT': return ' '
       case 'RESET': return StyleUtilities.reset
       case 'TEXT_DECORATION_ITALIC': return StyleTextDecoration.italic
       case 'TEXT_DECORATION_STRONG': return StyleTextDecoration.strong

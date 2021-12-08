@@ -56,47 +56,49 @@ status.print()
 
 Sets the text background color.
 
-**`backgroundColor:`**
+`backgroundColor: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
 
-- `'black'`
-- `'blue'`
-- `'green'`
-- `'red'`
-- `'white'`
-- `'yellow'`
+> Automatically sets `paddingLeft` and `paddingRight` to 1. This can be prevented by setting padding values to `0` or `'none'`.
 
 
 ### Color
 
 Sets the text color.
 
-**`color:`**
+`color: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
 
-- `'black'`
-- `'blue'`
-- `'green'`
-- `'red'`
-- `'white'`
-- `'yellow'`
+
+### Margin
+
+Sets the spacing around the Element content.
+
+`margin: <number> | 'none'`
+
+Sets all sides to the same value. Set individual sides with:
+
+`marginBottom: <number> | 'none'`
+`marginLeft: <number> | 'none'`
+`marginRight: <number> | 'none'`
+`marginTop: <number> | 'none'`
+
+
+### Padding
+
+Sets the spacing around the output text. Used with `backgroundColor` to prevent text from touching the background walls.
+
+`paddingLeft: <number> | 'none'`  
+`paddingRight: <number> | 'none'`
 
 
 ### Text decoration
 
-Alter the visual appearance of text.
+Sets the visual appearance of text.
 
-**`textDecoration:`**
-
-- `'italic'` - Italic or cursive
-- `'strong'` - Bold or increased brightness
-- `'underline'`
+`textDecoration: 'italic' | 'strong' | 'underline'`
 
 
 ### Text transform
 
-Alter the output of text.
+Transforms the text output.
 
-**`textTransform:`**
-
-- `'capitalize'` - Capitalize every word in a string
-- `'lowercase'` - Make every word lowercase
-- `'uppercase'` - Make every word uppercase
+`textTransform: 'capitalize' | 'lowercase' | 'uppercase'`

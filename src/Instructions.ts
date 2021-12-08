@@ -8,7 +8,7 @@ interface InstructionsProps {
 /**
  * List of instructions available to the stack.
  * @author CasperSocio
- * @version 0.0.2
+ * @version 0.0.3
  * @since 0.0.1
  */
 export const Instructions: InstructionsProps = {
@@ -19,9 +19,9 @@ export const Instructions: InstructionsProps = {
   'MARGIN_LEFT': new Instruction('MARGIN_LEFT'),
   'MARGIN_RIGHT': new Instruction('MARGIN_RIGHT'),
   'MARGIN_TOP': new Instruction('MARGIN_TOP'),
+  'PADDING_LEFT': new Instruction('PADDING_LEFT'),
+  'PADDING_RIGHT': new Instruction('PADDING_RIGHT'),
   'RESET': new Instruction('RESET'),
-  'SPACE_AFTER': new Instruction('SPACE_AFTER'),
-  'SPACE_BEFORE': new Instruction('SPACE_BEFORE'),
   'TEXT_DECORATION_ITALIC': new Instruction('TEXT_DECORATION_ITALIC'),
   'TEXT_DECORATION_STRONG': new Instruction('TEXT_DECORATION_STRONG'),
   'TEXT_DECORATION_UNDERLINE': new Instruction('TEXT_DECORATION_UNDERLINE'),
