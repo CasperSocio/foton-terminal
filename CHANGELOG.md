@@ -1,10 +1,27 @@
 # CHANGELOG
 
-## 0.0.2
+## 0.0.3
+
+
+## 0.0.2 (Dec 6, 2021)
 
 ### Features
 
-- Added Element content and style options in constructor.
+- Added `Element.showInstructions()` to display the instructions array.
+- Added a new class to hold the instructions stack.
+- Added styling rules: `paddingLeft`, `paddingRight`.
+
+### Changes
+
+- Improved `Element.showLog()`
+- Improved documentation.
+- Margin styling-rule value now accepts `'none'`.
+- Content must be defined when creating a new Element instance.
+
+### Fixes
+
+- Properly implemented margin styling rules for `'p'` Elements.
+
 
 ### Changes
 

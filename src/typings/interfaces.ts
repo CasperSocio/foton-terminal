@@ -1,7 +1,7 @@
-import { TColor, TInstructionType } from './types'
+import { TColor, TInstructionName } from './types'
 
 export interface IInstruction {
-  name: TInstructionType
+  name: TInstructionName
   sortPriority: number
   value?: string
 }
@@ -20,11 +20,13 @@ export interface IStyleRules {
   border?: 'white'
   color?: TColor
   listStyle?: 'none'
-  margin?: number | [number, number]
-  marginBottom?: number
-  marginLeft?: number
-  marginRight?: number
-  marginTop?: number
+  margin?: number | 'none'
+  marginBottom?: number | 'none'
+  marginLeft?: number | 'none'
+  marginRight?: number | 'none'
+  marginTop?: number | 'none'
+  paddingLeft?: number | 'none'
+  paddingRight?: number | 'none'
   textDecoration?: 'italic' | 'strong' | 'underline'
   textTransform?: 'capitalize' | 'lowercase' | 'uppercase'
 }

@@ -1,7 +1,7 @@
 {
   "name": "photon-terminal",
   "author": "CasperSocio <casper.tolefsen@mobit.no>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI formatting tool",
   "scripts": {
     "build": "tsc",
@@ -22,6 +22,14 @@
     "Text"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CasperSocio/photon-terminal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CasperSocio/photon-terminal/issues"
+  },
+  "homepage": "https://github.com/CasperSocio/photon-terminal",
   "devDependencies": {
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
