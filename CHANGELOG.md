@@ -1,9 +1,22 @@
 # CHANGELOG
 
-## 0.0.3
+## 0.0.4 (Dec 8, 2021)
 
+A quick fix for documentation not matching the current release.  
+Many changes were made to the repository in preparation for adding new contributors.
 
-## 0.0.2 (Dec 6, 2021)
+### Features
+
+- Added Issue templates to repository.
+- Added LICENCE to repository.
+
+### Fixes
+
+- Updated documentation so it applies to the current release.
+
+---
+
+## 0.0.3 (Dec 8, 2021)
 
 ### Features
 
@@ -22,12 +35,16 @@
 
 - Properly implemented margin styling rules for `'p'` Elements.
 
+---
+
+## 0.0.2 (Dec 6, 2021)
 
 ### Changes
 
 - Implemented the `Instruction` class.
 - Improved `Element` logs.
 
+---
 
 ## 0.0.1 (Dec 6, 2021)
 
