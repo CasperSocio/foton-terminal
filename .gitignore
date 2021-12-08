@@ -4,6 +4,7 @@
 .DS_Store
 .npmrc
 *.d.ts
+*.tgz
 package-lock.json
 index.*s
 test.*s
