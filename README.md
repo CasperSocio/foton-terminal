@@ -19,8 +19,10 @@ npm i -D photon-terminal
 ```typescript
 import Photon from 'photon-terminal'
 
-const greeting = new Photon.Element('p')
-greeting.content = 'Hello World!'
+const greeting = new Photon.Element({
+  tag: 'p',
+  content: 'Hello World!'
+})
 
 greeting.print()
 // Prints 'Hello World!' to the CLI
@@ -40,8 +42,10 @@ const classSuccess = new Photon.Style({
   textTransform: 'uppercase',
 }).rules
 
-const status = new Photon.Element('p')
-status.content = 'Passing'
+const status = new Photon.Element({
+  tag: 'p',
+  content: 'Passing'
+})
 status.style = classSuccess
 
 status.print()
@@ -58,7 +62,7 @@ Sets the text background color.
 
 `backgroundColor: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
 
-> Automatically sets `paddingLeft` and `paddingRight` to 1. This can be prevented by setting padding values to `0` or `'none'`.
+Automatically sets `paddingLeft` and `paddingRight` to 1. This can be prevented by setting padding values to `0` or `'none'`.
 
 
 ### Color
@@ -76,9 +80,9 @@ Sets the spacing around the Element content.
 
 Sets all sides to the same value. Set individual sides with:
 
-`marginBottom: <number> | 'none'`
-`marginLeft: <number> | 'none'`
-`marginRight: <number> | 'none'`
+`marginBottom: <number> | 'none'`  
+`marginLeft: <number> | 'none'`  
+`marginRight: <number> | 'none'`  
 `marginTop: <number> | 'none'`
 
 
