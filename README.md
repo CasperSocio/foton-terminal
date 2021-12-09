@@ -79,16 +79,16 @@ status.print()
 
 Sets the text background color.
 
-`backgroundColor: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
+`backgroundColor: 'black' | 'blue' | 'cyan' | 'green' | 'magenta' | 'red' | 'white' | 'yellow'`
 
-Automatically sets `paddingLeft` and `paddingRight` to 1. This can be prevented by setting padding values to `0` or `'none'`.
+Automatically sets `paddingLeft` and `paddingRight` to `1`. This can be prevented by setting padding values to `0` or `'none'`.
 
 
 ### Color
 
 Sets the text color.
 
-`color: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
+`color: 'black' | 'blue' | 'cyan' | 'green' | 'magenta' | 'red' | 'white' | 'yellow'`
 
 
 ### Margin

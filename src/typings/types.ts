@@ -4,7 +4,7 @@ import {
 } from './interfaces'
 
 /** The available color options */
-export type TColor = 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'
+export type TColor = 'black' | 'blue' | 'cyan' | 'green' | 'magenta' | 'red' | 'white' | 'yellow'
 
 export type TContent = string | string[]
 
