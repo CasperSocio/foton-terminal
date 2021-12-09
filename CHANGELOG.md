@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.5
+
+---
+
 ## 0.0.4 (Dec 8, 2021)
 
 A quick fix for documentation not matching the current release.  
