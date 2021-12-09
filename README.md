@@ -2,7 +2,12 @@
 
 (A re-release of Foton Terminal)
 
-Photon Terminal is a CLI formatting tool that structures output in a similar way to React elements.
+This is a pre-release which means the package is in the early stages of development. Every new version is likely to introduce breaking changes as the core functionalities are still being developed.
+
+
+## Introduction
+
+Photon Terminal is a CLI formatting tool for web-developers that structures output in a similar way to React elements. Photon Terminal stands out because it lets you style CLI output with CSS-rules.
 
 
 ## Getting started
@@ -15,6 +20,20 @@ npm i -D photon-terminal
 
 
 ### Add a new element
+
+Elements are individual components that can be styled with rules similar to CSS.
+
+```typescript
+import Photon from 'photon-terminal'
+
+const greeting = new Photon.Element('p')
+greeting.content = 'Hello World!'
+
+greeting.print()
+// Prints 'Hello World!' to the CLI
+```
+
+or
 
 ```typescript
 import Photon from 'photon-terminal'
@@ -106,3 +125,19 @@ Sets the visual appearance of text.
 Transforms the text output.
 
 `textTransform: 'capitalize' | 'lowercase' | 'uppercase'`
+
+
+## Upcoming features
+
+These are the planned upcoming features.
+
+### Elements
+
+- Div
+- Headings
+- Lists
+- Tables
+
+### CSS properties
+
+- Border

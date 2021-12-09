@@ -2,6 +2,10 @@
 
 ## 0.0.5
 
+### Changes
+
+- Re-introduced the ability to only set element type (`new Photon.Element('p')`) when creating a new Element instance.
+
 ---
 
 ## 0.0.4 (Dec 8, 2021)

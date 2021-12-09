@@ -11,14 +11,25 @@ import {
   IInstruction,
   IStyleRules
 } from '../typings/interfaces'
-import { TContent, TInstructionName, TLogPrefix, TNumericRule } from '../typings/types'
+import {
+  TContent,
+  TInstructionName,
+  TLogPrefix,
+  TNumericRule,
+  TTag
+} from '../typings/types'
 import { Instruction } from './Instruction'
 import { InstructionStack } from './InstructionStack'
 
 /**
+ * The valid props to pass a new Element instance.
+ */
+type InputProps = TTag | IElementList | IElementParagraph
+
+/**
  * The Element class.
  * @author CasperSocio
- * @version 0.0.3
+ * @version 0.0.5
  * @since 0.0.1
  */
  export class Element {
@@ -28,26 +39,28 @@ import { InstructionStack } from './InstructionStack'
   private _style: IStyleRules
   private _tag
 
-  constructor({
-    content,
-    tag
-  }: IElementList | IElementParagraph) {
+  constructor(input: InputProps) {
     this._stack = new InstructionStack()
     this._log = []
     this._style = {}
-    this._tag = tag
 
-    // Initialize this._content
-    switch (this._tag) {
-      case 'ol':
-      case 'ul':
-        this._content = content || []
-        break
-      case 'p':
-      default:
-        this._content = content || ''
-        break
+    if (typeof input === 'string') {
+      this._tag = input
+      this._content = ''
+    } else {
+      this._tag = input.tag
+      switch (this._tag) {
+        case 'ol':
+        case 'ul':
+          this._content = input.content || []
+          break
+        case 'p':
+        default:
+          this._content = input.content || ''
+          break
+      }
     }
+
   }
 
   public set content(content: TContent) {
