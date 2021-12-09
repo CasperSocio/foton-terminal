@@ -133,19 +133,30 @@ These are the planned upcoming features.
 
 ### Elements
 
-- Div
-- Headings
-- Lists
-- Tables
+- `<div>`
+- `<h>` - represents a heading
+- `<ol>`
+  - `<li>`
+- `<strong>`
+- `<table>`
+  - `<tbody>`
+  - `<td>`
+  - `<th>`
+  - `<thead>`
+  - `<tr>`
+- `<ul>`
+  - `<li>`
 
 ### CSS properties
 
-- Border
-- Border-collapse
-- Border-color
-- Border-style
-- Height
-- List-style-type
-- Text-align
-- Vertical-align
-- Width
+- `align-items: 'center' | 'end' | 'start'`
+- `border-collapse: 'collapse' | 'separate'`
+- `border-color: <color>`
+- `border-style: 'dotted' | 'solid'`
+- `display: 'flex'`
+- `flex-direction: 'column' | 'row'`
+- `height: <number>`
+- `justify-content: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start'`
+- `list-style-type: 'disc' | 'circle' | 'none' | 'square'`
+- `text-align: 'center' | 'justify' | 'left' | 'right'`
+- `width: <number>`
