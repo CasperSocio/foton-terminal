@@ -141,3 +141,11 @@ These are the planned upcoming features.
 ### CSS properties
 
 - Border
+- Border-collapse
+- Border-color
+- Border-style
+- Height
+- List-style-type
+- Text-align
+- Vertical-align
+- Width
