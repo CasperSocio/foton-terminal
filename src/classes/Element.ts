@@ -149,7 +149,7 @@ type InputProps = TTag | IElementList | IElementParagraph
    * @since 0.0.3
    * @private
    */
-  private addToStack(instruction: IInstruction) {
+  private addToStack(instruction: IInstruction, value?: number | string) {
     this.log('INS', [
       StyleTextDecoration.strong,
       StyleColor.green,
@@ -159,7 +159,7 @@ type InputProps = TTag | IElementList | IElementParagraph
       ' ' + instruction.name + ' ',
       StyleUtilities.reset
     ].join(''))
-    this._stack.add(instruction)
+    this._stack.add(instruction, value)
   }
 
   /**
@@ -215,66 +215,45 @@ type InputProps = TTag | IElementList | IElementParagraph
     // Padding-right
     this.addNumberValueInstruction(this._style.paddingRight, Instructions.PADDING_RIGHT)
 
+    // Text-align
+    this._style.textAlign && this.addToStack(Instructions[`TEXT_ALIGN_${this._style.textAlign.toUpperCase()}`])
+
     // Text-decoration
-    if (this._style.textDecoration) {
-      switch (this._style.textDecoration) {
-        case 'italic':
-          this.addToStack(Instructions.TEXT_DECORATION_ITALIC)
-          break
-        case 'strong':
-          this.addToStack(Instructions.TEXT_DECORATION_STRONG)
-          break
-        case 'underline':
-          this.addToStack(Instructions.TEXT_DECORATION_UNDERLINE)
-          break
-        default:
-          break
-      }
-    }
+    this._style.textDecoration && this.addToStack(Instructions[`TEXT_DECORATION_${this._style.textDecoration.toUpperCase()}`])
 
     // Text-transform
-    if (this._style.textTransform) {
-      switch (this._style.textTransform) {
-        case 'capitalize':
-          this.addToStack(Instructions.TEXT_TRANSFORM_CAPITALIZE)
-          break
-        case 'lowercase':
-          this.addToStack(Instructions.TEXT_TRANSFORM_LOWERCASE)
-          break
-        case 'uppercase':
-          this.addToStack(Instructions.TEXT_TRANSFORM_UPPERCASE)
-          break
-        default:
-          break
-      }
-    }
+    this._style.textTransform && this.addToStack(Instructions[`TEXT_TRANSFORM_${this._style.textTransform.toUpperCase()}`])
 
     // Width
     if (this._style.width !== undefined) {
 
       // Find the total length of content + padding
       let preWidth: number = this._content.length
-      console.log('Initial preWidth: ' + preWidth)
-      if (this._style.backgroundColor && !this._style.paddingLeft) {
-        preWidth++
-      }
-      if (this._style.backgroundColor && !this._style.paddingRight) {
-        preWidth++
-      }
-      if (this._style.paddingLeft && typeof this._style.paddingLeft === 'number') {
-        preWidth += this._style.paddingLeft
-      }
-      if (this._style.paddingRight && typeof this._style.paddingRight === 'number') {
-        preWidth += this._style.paddingRight
-      }
-      console.log('Padded preWidth: ' + preWidth)
+      let hasBackgroundPaddingLeft: boolean,
+          hasBackgroundPaddingRight: boolean
 
-      // Only add width if width is more than content.length + padding
+      hasBackgroundPaddingLeft = (
+        this._style.backgroundColor && !this._style.paddingLeft
+        ? true
+        : false
+      )
+      hasBackgroundPaddingRight = (
+        this._style.backgroundColor && !this._style.paddingRight
+        ? true
+        : false
+      )
+
+      if (hasBackgroundPaddingLeft || hasBackgroundPaddingRight)
+        preWidth++
+      if (this._style.paddingLeft && typeof this._style.paddingLeft === 'number')
+        preWidth += this._style.paddingLeft
+      if (this._style.paddingRight && typeof this._style.paddingRight === 'number')
+        preWidth += this._style.paddingRight
+
+      // Only add width if (width > content.length + padding)
       if (preWidth < this._style.width) {
         // Add 'WIDTH' instructions
-        for (let i = preWidth; i < this._style.width; i++) {
-          this.addToStack(Instructions.WIDTH)
-        }
+        this.addToStack(Instructions.WIDTH, this._style.width - preWidth)
       }
     }
 
@@ -337,7 +316,7 @@ type InputProps = TTag | IElementList | IElementParagraph
         case 'TEXT_DECORATION_STRONG':
         case 'TEXT_DECORATION_UNDERLINE':
           if (instruction.value) {
-            output.push(instruction.value)
+            output.push(String(instruction.value))
             this.activateStyle(instruction)
           }
           break
@@ -347,7 +326,7 @@ type InputProps = TTag | IElementList | IElementParagraph
             if (this._tag === 'ol' || this._tag === 'ul') {
               output.push(instruction.value + '\n')
             } else {
-              output.push(instruction.value)
+              output.push(String(instruction.value))
             }
           }
           this.deactivateStyle(Instructions.COLOR)
@@ -358,26 +337,43 @@ type InputProps = TTag | IElementList | IElementParagraph
           break
 
         case 'TEXT_TRANSFORM_CAPITALIZE':
-          this._stack.findAndReplaceValue('CONTENT', value => (
-            value.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')
-          ))
+          this._stack.findAndReplaceValue({
+            name: 'CONTENT',
+            callback: (value: string) => (
+              value.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')
+            )
+          })
           break
 
         case 'TEXT_TRANSFORM_LOWERCASE':
-          this._stack.findAndReplaceValue('CONTENT', value => value.toLowerCase())
+          this._stack.findAndReplaceValue({
+            name: 'CONTENT',
+            callback: (value: string) => value.toLowerCase()
+          })
           break
 
         case 'TEXT_TRANSFORM_UPPERCASE':
-          this._stack.findAndReplaceValue('CONTENT', value => value.toUpperCase())
+          this._stack.findAndReplaceValue({
+            name: 'CONTENT',
+            callback: value => value.toUpperCase()
+          })
           break
 
         case 'RESET':
           this.deactivateStyle(Instructions.BACKGROUND_COLOR)
           output.push(this.updateStyles())
           break
+
+        case 'WIDTH':
+          if (instruction.value) {
+            for (let i = 1; i < instruction.value; i++) {
+              output.push(' ')
+            }
+          }
+          break
       
         default:
-          instruction.value && output.push(instruction.value)
+          instruction.value && typeof instruction.value === 'string' && output.push(instruction.value)
           break
       }
     })
@@ -485,9 +481,8 @@ type InputProps = TTag | IElementList | IElementParagraph
   private updateStyles() {
     this.log('LOG', 'Updating styles')
     let updatedStyles: string[] = [StyleUtilities.reset]
-    console.log(this._activeStyles)
     this._activeStyles.forEach(style => {
-      style.value && updatedStyles.push(style.value)
+      style.value && updatedStyles.push(String(style.value))
     })
     return updatedStyles.join('')
   }

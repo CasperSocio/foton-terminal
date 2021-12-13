@@ -35,15 +35,18 @@ export class Instruction {
    */
   private setSortPriority() {
     switch (this._name) {
-      case 'BACKGROUND_COLOR': return -5
-      case 'COLOR': return -3
+      case 'BACKGROUND_COLOR': return -6
+      case 'COLOR': return -4
       case 'MARGIN_BOTTOM': return 10
       case 'MARGIN_LEFT': return -9
       case 'MARGIN_RIGHT': return 9
       case 'MARGIN_TOP': return -10
       case 'RESET': return 3
-      case 'PADDING_LEFT': return -4
+      case 'PADDING_LEFT': return -5
       case 'PADDING_RIGHT': return 2
+      case 'TEXT_ALIGN_CENTER':
+      case 'TEXT_ALIGN_LEFT':
+      case 'TEXT_ALIGN_RIGHT': return -3
       case 'TEXT_DECORATION_ITALIC':
       case 'TEXT_DECORATION_STRONG':
       case 'TEXT_DECORATION_UNDERLINE': return -2

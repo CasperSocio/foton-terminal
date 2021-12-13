@@ -9,6 +9,10 @@
 - Added the `width` style rule.
 - Re-introduced the ability to only set element type (`new Photon.Element('p')`) when creating a new Element instance.
 
+### Changes
+
+- Changed `instruction.value` type from `string` to `number | string`.
+
 ---
 
 ## 0.0.4 (Dec 8, 2021)
