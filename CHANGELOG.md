@@ -4,11 +4,9 @@
 
 ### Features
 
+- Added indenting to `.showLog()`.
 - Added states to style rules making the parser more accurate.
 - Added the `width` style rule.
-
-### Changes
-
 - Re-introduced the ability to only set element type (`new Photon.Element('p')`) when creating a new Element instance.
 
 ---

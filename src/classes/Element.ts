@@ -36,7 +36,7 @@ type InputProps = TTag | IElementList | IElementParagraph
   private _activeStyles: IInstruction[]
   private _content: TContent
   private _stack
-  private _log: string[]
+  private _log: [TLogPrefix, string][]
   private _style: IStyleRules
   private _tag
 
@@ -304,18 +304,14 @@ type InputProps = TTag | IElementList | IElementParagraph
   /**
    * Adds a new log entry.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.5
    * @param prefix What type of log to use
    * @param msg The string message
    * @since 0.0.1
    * @private
    */
   private log(prefix: TLogPrefix, msg: string) {
-    if (prefix === 'ACT') {
-      this._log.push(`${StyleColor.blue}[${prefix}] ${msg}${StyleUtilities.reset}`)
-    } else {
-      this._log.push(`[${prefix}] ${msg}`)
-    }
+    this._log.push([prefix, msg])
   }
 
   /**
@@ -447,13 +443,34 @@ type InputProps = TTag | IElementList | IElementParagraph
   /**
    * Prints all log entries.
    * @author CasperSocio
-   * @version 0.0.1
+   * @version 0.0.5
    * @since 0.0.1
    * @public
    */
   public showLog() {
+    let tabSize: number = 0
     this._log.forEach(log => {
-      console.log(log)
+      switch (log[0]) {
+        case 'ACT':
+          if (log[1].includes('[END]') && tabSize > 0) {
+            console.groupEnd()
+            tabSize--
+          }
+          console.log(`${StyleColor.blue}[${log[0]}] ${log[1] + StyleUtilities.reset}`)
+          if (log[1].includes('[START]')) {
+            console.group()
+            tabSize++
+          }
+          break
+
+        case 'PAR':
+          console.log(`${StyleColor.yellow}[${log[0]}] ${log[1] + StyleUtilities.reset}`)
+          break
+      
+        default:
+          console.log(`[${log[0]}] ${log[1]}`)
+          break
+      }
     })
   }
 
