@@ -27,14 +27,31 @@ export class InstructionStack {
     this._stack.push(instruction)
   }
 
-  findByName(name: TInstructionName) {
-    let res: IInstruction[] = []
-    this._stack.forEach(instruction => {
-      if (instruction.name === name) {
-        res.push(instruction)
+  /**
+   * Checks if the stack contains a given instruction.
+   * @author CasperSocio
+   * @version 0.0.5
+   * @param name The instruction.name to look for
+   * @returns boolean
+   * @since 0.0.5
+   * @public
+   */
+  contains(name: TInstructionName) {
+    for (let i in this._stack) {
+      if (this._stack[i].name === name) {
+        return true
       }
-    })
-    return res
+    }
+    return false
+  }
+
+  findByName(name: TInstructionName) {
+    for (let i in this._stack) {
+      if (this._stack[i].name === name) {
+        return this._stack[i]
+      }
+    }
+    return false
   }
 
   /**
@@ -83,6 +100,24 @@ export class InstructionStack {
       }
       return instruction
     })
+  }
+
+  /**
+   * Finds the stack index of an instruction.
+   * @author CasperSocio
+   * @version 0.0.5
+   * @param name Name of the instruction
+   * @returns The index number
+   * @since 0.0.5
+   * @public
+   */
+  indexOf(name: TInstructionName) {
+    for (let i = 0; i < this._stack.length; i++) {
+      if (this._stack[i].name === name) {
+        return i
+      }
+    }
+    return -1
   }
 
   /**
