@@ -33,6 +33,7 @@ type InputProps = TTag | IElementList | IElementParagraph
  * @since 0.0.1
  */
  export class Element {
+  private _activeStyles: IInstruction[]
   private _content: TContent
   private _stack
   private _log: string[]
@@ -40,8 +41,9 @@ type InputProps = TTag | IElementList | IElementParagraph
   private _tag
 
   constructor(input: InputProps) {
-    this._stack = new InstructionStack()
+    this._activeStyles = []
     this._log = []
+    this._stack = new InstructionStack()
     this._style = {}
 
     if (typeof input === 'string') {
@@ -71,6 +73,27 @@ type InputProps = TTag | IElementList | IElementParagraph
   public set style(rules: IStyleRules) {
     this.log('LOG', 'Setting new style rules')
     this._style = rules
+  }
+
+  /**
+   * Adds a new instruction to this._activeStyles.
+   * @author CasperSocio
+   * @version 0.0.5
+   * @param instruction The instruction to add
+   * @since 0.0.5
+   * @private
+   */
+  private activateStyle(instruction: IInstruction) {
+    let exists: boolean = false
+    this._activeStyles.forEach(style => {
+      if (style.name === instruction.name) {
+        exists = true
+      }
+    })
+    if (!exists) {
+      this.log('LOG', 'Activating ' + instruction.name)
+      this._activeStyles.push(instruction)
+    }
   }
 
   /**
@@ -259,6 +282,26 @@ type InputProps = TTag | IElementList | IElementParagraph
   }
 
   /**
+   * Removes an instruction from this._activeStyles.
+   * @author CasperSocio
+   * @version 0.0.5
+   * @param instruction The instruction to remove
+   * @since 0.0.5
+   * @private
+   */
+  private deactivateStyle(instruction: IInstruction) {
+    let newActiveStyles: IInstruction[] = []
+    this._activeStyles.forEach(style => {
+      if (style === instruction) {
+        this.log('LOG', 'Deactivating ' + instruction.name)
+      } else {
+        newActiveStyles.push(style)
+      }
+    })
+    this._activeStyles = newActiveStyles
+  }
+
+  /**
    * Adds a new log entry.
    * @author CasperSocio
    * @version 0.0.1
@@ -279,7 +322,7 @@ type InputProps = TTag | IElementList | IElementParagraph
    * Parses the instruction stack and
    * generates the final output string.
    * @author CasperSocio
-   * @version 0.0.3
+   * @version 0.0.5
    * @since 0.0.1
    * @private
    */
@@ -292,14 +335,30 @@ type InputProps = TTag | IElementList | IElementParagraph
       this.log('PAR', `${instruction.name}`)
 
       switch (instruction.name) {
+        case 'BACKGROUND_COLOR':
+        case 'COLOR':
+        case 'TEXT_DECORATION_ITALIC':
+        case 'TEXT_DECORATION_STRONG':
+        case 'TEXT_DECORATION_UNDERLINE':
+          if (instruction.value) {
+            output.push(instruction.value)
+            this.activateStyle(instruction)
+          }
+          break
+        
         case 'CONTENT':
           if (instruction.value) {
             if (this._tag === 'ol' || this._tag === 'ul') {
               output.push(instruction.value + '\n')
-              break
+            } else {
+              output.push(instruction.value)
             }
-            output.push(instruction.value)
           }
+          this.deactivateStyle(Instructions.COLOR)
+          this.deactivateStyle(Instructions.TEXT_DECORATION_ITALIC)
+          this.deactivateStyle(Instructions.TEXT_DECORATION_STRONG)
+          this.deactivateStyle(Instructions.TEXT_DECORATION_UNDERLINE)
+          output.push(this.updateStyles())
           break
 
         case 'TEXT_TRANSFORM_CAPITALIZE':
@@ -314,6 +373,11 @@ type InputProps = TTag | IElementList | IElementParagraph
 
         case 'TEXT_TRANSFORM_UPPERCASE':
           this._stack.findAndReplaceValue('CONTENT', value => value.toUpperCase())
+          break
+
+        case 'RESET':
+          this.deactivateStyle(Instructions.BACKGROUND_COLOR)
+          output.push(this.updateStyles())
           break
       
         default:
@@ -391,5 +455,23 @@ type InputProps = TTag | IElementList | IElementParagraph
     this._log.forEach(log => {
       console.log(log)
     })
+  }
+
+  /**
+   * Resets formatting and re-applies styling.
+   * @author CasperSocio
+   * @version 0.0.5
+   * @returns The updated formatting as a string
+   * @since 0.0.5
+   * @private
+   */
+  private updateStyles() {
+    this.log('LOG', 'Updating styles')
+    let updatedStyles: string[] = [StyleUtilities.reset]
+    console.log(this._activeStyles)
+    this._activeStyles.forEach(style => {
+      style.value && updatedStyles.push(style.value)
+    })
+    return updatedStyles.join('')
   }
 }

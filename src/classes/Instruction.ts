@@ -35,21 +35,21 @@ export class Instruction {
    */
   private setSortPriority() {
     switch (this._name) {
-      case 'BACKGROUND_COLOR': return -4
+      case 'BACKGROUND_COLOR': return -5
       case 'COLOR': return -3
       case 'MARGIN_BOTTOM': return 10
       case 'MARGIN_LEFT': return -9
       case 'MARGIN_RIGHT': return 9
       case 'MARGIN_TOP': return -10
       case 'RESET': return 3
-      case 'PADDING_LEFT': return -2
+      case 'PADDING_LEFT': return -4
       case 'PADDING_RIGHT': return 2
       case 'TEXT_DECORATION_ITALIC':
       case 'TEXT_DECORATION_STRONG':
-      case 'TEXT_DECORATION_UNDERLINE': return -1
+      case 'TEXT_DECORATION_UNDERLINE': return -2
       case 'TEXT_TRANSFORM_CAPITALIZE':
       case 'TEXT_TRANSFORM_LOWERCASE':
-      case 'TEXT_TRANSFORM_UPPERCASE': return -20
+      case 'TEXT_TRANSFORM_UPPERCASE': return -1
       case 'WIDTH': return 1
       default: return 0
     }
@@ -72,7 +72,6 @@ export class Instruction {
       case 'PADDING_LEFT':
       case 'PADDING_RIGHT':
       case 'WIDTH': return ' '
-      case 'RESET': return StyleUtilities.reset
       case 'TEXT_DECORATION_ITALIC': return StyleTextDecoration.italic
       case 'TEXT_DECORATION_STRONG': return StyleTextDecoration.strong
       case 'TEXT_DECORATION_UNDERLINE': return StyleTextDecoration.underline

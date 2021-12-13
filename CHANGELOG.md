@@ -4,6 +4,7 @@
 
 ### Features
 
+- Added states to style rules making the parser more accurate.
 - Added the `width` style rule.
 
 ### Changes
