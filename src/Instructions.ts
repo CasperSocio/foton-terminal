@@ -8,7 +8,7 @@ interface InstructionsProps {
 /**
  * List of instructions available to the stack.
  * @author CasperSocio
- * @version 0.0.3
+ * @version 0.0.5
  * @since 0.0.1
  */
 export const Instructions: InstructionsProps = {
@@ -28,4 +28,5 @@ export const Instructions: InstructionsProps = {
   'TEXT_TRANSFORM_CAPITALIZE': new Instruction('TEXT_TRANSFORM_CAPITALIZE'),
   'TEXT_TRANSFORM_LOWERCASE': new Instruction('TEXT_TRANSFORM_LOWERCASE'),
   'TEXT_TRANSFORM_UPPERCASE': new Instruction('TEXT_TRANSFORM_UPPERCASE'),
+  'WIDTH': new Instruction('WIDTH'),
 }

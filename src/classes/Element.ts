@@ -142,7 +142,7 @@ type InputProps = TTag | IElementList | IElementParagraph
   /**
    * Adds new styling instructions to the stack.
    * @author CasperSocio
-   * @version 0.0.3
+   * @version 0.0.5
    * @since 0.0.1
    * @private
    */
@@ -225,6 +225,36 @@ type InputProps = TTag | IElementList | IElementParagraph
           break
       }
     }
+
+    // Width
+    if (this._style.width !== undefined) {
+
+      // Find the total length of content + padding
+      let preWidth: number = this._content.length
+      console.log('Initial preWidth: ' + preWidth)
+      if (this._style.backgroundColor && !this._style.paddingLeft) {
+        preWidth++
+      }
+      if (this._style.backgroundColor && !this._style.paddingRight) {
+        preWidth++
+      }
+      if (this._style.paddingLeft && typeof this._style.paddingLeft === 'number') {
+        preWidth += this._style.paddingLeft
+      }
+      if (this._style.paddingRight && typeof this._style.paddingRight === 'number') {
+        preWidth += this._style.paddingRight
+      }
+      console.log('Padded preWidth: ' + preWidth)
+
+      // Only add width if width is more than content.length + padding
+      if (preWidth < this._style.width) {
+        // Add 'WIDTH' instructions
+        for (let i = preWidth; i < this._style.width; i++) {
+          this.addToStack(Instructions.WIDTH)
+        }
+      }
+    }
+
     this.log('ACT', 'APPLYING STYLES [END]')
   }
 
@@ -336,12 +366,18 @@ type InputProps = TTag | IElementList | IElementParagraph
   /**
    * Prints instruction stack.
    * @author CasperSocio
-   * @version 0.0.3
+   * @version 0.0.5
    * @since 0.0.2
    * @public
    */
   public showInstructions() {
-    console.log(this._stack.stack)
+    console.log('[')
+    console.group()
+    this._stack.stack.forEach(Instruction => {
+      console.log(`{ ${StyleColor.green + Instruction.name + StyleUtilities.reset} }`)
+    })
+    console.groupEnd()
+    console.log(']')
   }
 
   /**

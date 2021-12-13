@@ -2,6 +2,10 @@
 
 ## 0.0.5
 
+### Features
+
+- Added the `width` style rule.
+
 ### Changes
 
 - Re-introduced the ability to only set element type (`new Photon.Element('p')`) when creating a new Element instance.

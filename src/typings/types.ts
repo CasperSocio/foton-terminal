@@ -27,6 +27,7 @@ export type TInstructionName =
   | 'TEXT_TRANSFORM_CAPITALIZE'
   | 'TEXT_TRANSFORM_LOWERCASE'
   | 'TEXT_TRANSFORM_UPPERCASE'
+  | 'WIDTH'
 
 export type TLogPrefix = 'ACT' | 'INS' | 'LOG' | 'PAR'
 

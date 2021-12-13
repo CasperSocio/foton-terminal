@@ -28,7 +28,7 @@ export class Instruction {
   /**
    * Sets the sorting priority.
    * @author CasperSocio
-   * @version 0.0.3
+   * @version 0.0.5
    * @returns The sorting priority
    * @since 0.0.1
    * @private
@@ -50,6 +50,7 @@ export class Instruction {
       case 'TEXT_TRANSFORM_CAPITALIZE':
       case 'TEXT_TRANSFORM_LOWERCASE':
       case 'TEXT_TRANSFORM_UPPERCASE': return -20
+      case 'WIDTH': return 1
       default: return 0
     }
   }
@@ -57,7 +58,7 @@ export class Instruction {
   /**
    * Sets the instruction value.
    * @author CasperSocio
-   * @version 0.0.3
+   * @version 0.0.5
    * @returns The instruction value
    * @since 0.0.1
    * @private
@@ -69,7 +70,8 @@ export class Instruction {
       case 'MARGIN_LEFT':
       case 'MARGIN_RIGHT':
       case 'PADDING_LEFT':
-      case 'PADDING_RIGHT': return ' '
+      case 'PADDING_RIGHT':
+      case 'WIDTH': return ' '
       case 'RESET': return StyleUtilities.reset
       case 'TEXT_DECORATION_ITALIC': return StyleTextDecoration.italic
       case 'TEXT_DECORATION_STRONG': return StyleTextDecoration.strong

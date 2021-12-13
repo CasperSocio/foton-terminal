@@ -17,9 +17,7 @@ export interface IElementParagraph {
 
 export interface IStyleRules {
   backgroundColor?: TColor
-  border?: 'white'
   color?: TColor
-  listStyle?: 'none'
   margin?: number | 'none'
   marginBottom?: number | 'none'
   marginLeft?: number | 'none'
@@ -29,4 +27,5 @@ export interface IStyleRules {
   paddingRight?: number | 'none'
   textDecoration?: 'italic' | 'strong' | 'underline'
   textTransform?: 'capitalize' | 'lowercase' | 'uppercase'
+  width?: number
 }

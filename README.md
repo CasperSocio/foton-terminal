@@ -127,6 +127,13 @@ Transforms the text output.
 `textTransform: 'capitalize' | 'lowercase' | 'uppercase'`
 
 
+### Width
+
+Sets the total width of the output.
+
+`width: <number>`
+
+
 ## Upcoming features
 
 These are the planned upcoming features.
@@ -159,4 +166,3 @@ These are the planned upcoming features.
 - `justify-content: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start'`
 - `list-style-type: 'disc' | 'circle' | 'none' | 'square'`
 - `text-align: 'center' | 'justify' | 'left' | 'right'`
-- `width: <number>`
