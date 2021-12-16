@@ -4,9 +4,9 @@ import { TInstructionName } from '../typings/types'
 export class Instruction {
   private _name: TInstructionName
   private _sortPriority: number
-  private _value: string
+  private _value: number | string
 
-  constructor(name: TInstructionName, value?: string) {
+  constructor(name: TInstructionName, value?: number | string) {
     this._name = name
     this._sortPriority = this.setSortPriority()
     this._value = value || this.setValue()
@@ -21,7 +21,7 @@ export class Instruction {
   get value() {
     return this._value
   }
-  set value(value: string) {
+  set value(value: number | string) {
     this._value = value
   }
 
@@ -73,8 +73,8 @@ export class Instruction {
       case 'MARGIN_LEFT':
       case 'MARGIN_RIGHT':
       case 'PADDING_LEFT':
-      case 'PADDING_RIGHT':
-      case 'WIDTH': return ' '
+      case 'PADDING_RIGHT': return ' '
+      case 'WIDTH': return 0
       case 'TEXT_DECORATION_ITALIC': return StyleTextDecoration.italic
       case 'TEXT_DECORATION_STRONG': return StyleTextDecoration.strong
       case 'TEXT_DECORATION_UNDERLINE': return StyleTextDecoration.underline
