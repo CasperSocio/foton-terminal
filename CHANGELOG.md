@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.0.5
+
+### Features
+
+- Added indenting to `.showLog()`.
+- Added states to style rules making the parser more accurate.
+- Added the `width` style rule.
+- Re-introduced the ability to only set element type (`new Photon.Element('p')`) when creating a new Element instance.
+
+### Changes
+
+- Changed `instruction.value` type from `string` to `number | string`.
+
+---
+
 ## 0.0.4 (Dec 8, 2021)
 
 A quick fix for documentation not matching the current release.  

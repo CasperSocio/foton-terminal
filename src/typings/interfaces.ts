@@ -3,7 +3,7 @@ import { TColor, TInstructionName } from './types'
 export interface IInstruction {
   name: TInstructionName
   sortPriority: number
-  value?: string
+  value?: number | string
 }
 
 export interface IElementList {
@@ -17,9 +17,7 @@ export interface IElementParagraph {
 
 export interface IStyleRules {
   backgroundColor?: TColor
-  border?: 'white'
   color?: TColor
-  listStyle?: 'none'
   margin?: number | 'none'
   marginBottom?: number | 'none'
   marginLeft?: number | 'none'
@@ -27,6 +25,8 @@ export interface IStyleRules {
   marginTop?: number | 'none'
   paddingLeft?: number | 'none'
   paddingRight?: number | 'none'
+  textAlign?: 'center' | 'left' | 'right'
   textDecoration?: 'italic' | 'strong' | 'underline'
   textTransform?: 'capitalize' | 'lowercase' | 'uppercase'
+  width?: number
 }

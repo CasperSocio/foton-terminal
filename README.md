@@ -2,7 +2,12 @@
 
 (A re-release of Foton Terminal)
 
-Photon Terminal is a CLI formatting tool that structures output in a similar way to React elements.
+This is a pre-release which means the package is in the early stages of development. Every new version is likely to introduce breaking changes as the core functionalities are still being developed.
+
+
+## Introduction
+
+Photon Terminal is a CLI formatting tool for web-developers that structures output in a similar way to React elements. Photon Terminal stands out because it lets you style CLI output with CSS-rules.
 
 
 ## Getting started
@@ -15,6 +20,20 @@ npm i -D photon-terminal
 
 
 ### Add a new element
+
+Elements are individual components that can be styled with rules similar to CSS.
+
+```typescript
+import Photon from 'photon-terminal'
+
+const greeting = new Photon.Element('p')
+greeting.content = 'Hello World!'
+
+greeting.print()
+// Prints 'Hello World!' to the CLI
+```
+
+or
 
 ```typescript
 import Photon from 'photon-terminal'
@@ -60,16 +79,16 @@ status.print()
 
 Sets the text background color.
 
-`backgroundColor: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
+`backgroundColor: 'black' | 'blue' | 'cyan' | 'green' | 'magenta' | 'red' | 'white' | 'yellow'`
 
-Automatically sets `paddingLeft` and `paddingRight` to 1. This can be prevented by setting padding values to `0` or `'none'`.
+Automatically sets `paddingLeft` and `paddingRight` to `1`. This can be prevented by setting padding values to `0` or `'none'`.
 
 
 ### Color
 
 Sets the text color.
 
-`color: 'black' | 'blue' | 'green' | 'red' | 'white' | 'yellow'`
+`color: 'black' | 'blue' | 'cyan' | 'green' | 'magenta' | 'red' | 'white' | 'yellow'`
 
 
 ### Margin
@@ -106,3 +125,44 @@ Sets the visual appearance of text.
 Transforms the text output.
 
 `textTransform: 'capitalize' | 'lowercase' | 'uppercase'`
+
+
+### Width
+
+Sets the total width of the output.
+
+`width: <number>`
+
+
+## Upcoming features
+
+These are the planned upcoming features.
+
+### Elements
+
+- `<div>`
+- `<h>` - represents a heading
+- `<ol>`
+  - `<li>`
+- `<strong>`
+- `<table>`
+  - `<tbody>`
+  - `<td>`
+  - `<th>`
+  - `<thead>`
+  - `<tr>`
+- `<ul>`
+  - `<li>`
+
+### CSS properties
+
+- `align-items: 'center' | 'end' | 'start'`
+- `border-collapse: 'collapse' | 'separate'`
+- `border-color: <color>`
+- `border-style: 'dotted' | 'solid'`
+- `display: 'flex'`
+- `flex-direction: 'column' | 'row'`
+- `height: <number>`
+- `justify-content: 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start'`
+- `list-style-type: 'disc' | 'circle' | 'none' | 'square'`
+- `text-align: 'center' | 'justify' | 'left' | 'right'`

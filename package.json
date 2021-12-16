@@ -1,7 +1,7 @@
 {
   "name": "photon-terminal",
   "author": "CasperSocio <casper.tolefsen@mobit.no>",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A CLI formatting tool",
   "scripts": {
     "build": "tsc",

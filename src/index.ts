@@ -5,3 +5,4 @@ export default {
   Element,
   Style
 }
+export { TColor as Color } from './typings/types'
