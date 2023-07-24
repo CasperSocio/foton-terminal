@@ -1,6 +1,16 @@
 # CHANGELOG
 
-## 0.0.5
+## next
+
+Complete project overhaul.
+
+### Changes
+
+- Converted to monorepo.
+
+---
+
+## 0.0.5 (Dec 16, 2021)
 
 ### Features
 

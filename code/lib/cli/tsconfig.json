@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "outDir": "lib",
+    "preserveConstEnums": true
+  },
+  "include": ["src/index.ts"]
+}

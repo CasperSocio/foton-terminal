@@ -1,0 +1,28 @@
+{
+  "name": "@photon-terminal/root",
+  "version": "0.1.0",
+  "description": "Photon Terminal root",
+  "author": "CasperSocio",
+  "homepage": "https://github.com/CasperSocio/photon-terminal/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CasperSocio/photon-terminal.git"
+  },
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "lib/*"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/jest": "^29.5.3",
+    "jest": "^29.6.1",
+    "lerna": "^7.1.4",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}

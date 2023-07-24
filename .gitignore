@@ -1,10 +1,8 @@
-/build/
-/lib/
-/node_modules/
+build
+code/lib/**/lib
+coverage
+dist
+node_modules
+
+*.log
 .DS_Store
-.npmrc
-*.d.ts
-*.tgz
-package-lock.json
-index.*s
-test.*s

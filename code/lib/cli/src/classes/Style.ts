@@ -6,10 +6,7 @@ interface StyleClass {
 }
 
 /**
- * A class to hold element styling
- * @author CasperSocio
- * @version 0.0.1
- * @since 0.0.1
+ * A class to hold element styling.
  */
 export class Style implements StyleClass {
   private _rules: IStyleRules
@@ -28,7 +25,7 @@ export class Style implements StyleClass {
   add(rules: IStyleRules) {
     this._rules = {
       ...this._rules,
-      ...rules
+      ...rules,
     }
   }
 }

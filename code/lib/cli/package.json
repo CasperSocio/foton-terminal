@@ -1,0 +1,35 @@
+{
+  "name": "photon-terminal",
+  "version": "0.1.0-alpha.0",
+  "description": "Photon Terminal's CLI — The easiest way to add photon-terminal to your project",
+  "author": "CasperSocio",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "homepage": "https://github.com/CasperSocio/photon-terminal/tree/next/code/lib/cli",
+  "bugs": {
+    "url": "https://github.com/CasperSocio/photon-terminal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CasperSocio/photon-terminal.git",
+    "directory": "code/lib/cli"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "command",
+    "formatting",
+    "interface",
+    "line",
+    "photon",
+    "terminal",
+    "text"
+  ]
+}
