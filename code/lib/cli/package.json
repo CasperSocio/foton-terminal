@@ -10,7 +10,8 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "homepage": "https://github.com/CasperSocio/photon-terminal/tree/next/code/lib/cli",
   "bugs": {

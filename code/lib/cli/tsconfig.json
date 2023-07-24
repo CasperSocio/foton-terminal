@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "Node",
     "outDir": "lib",
     "preserveConstEnums": true
   },

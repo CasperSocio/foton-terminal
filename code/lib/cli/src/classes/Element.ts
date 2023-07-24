@@ -61,11 +61,17 @@ export class Element {
     }
   }
 
+  get content(): TContent {
+    return this._content
+  }
   set content(content: TContent) {
     this._log('LOG', 'Setting new content')
     this._content = content
   }
 
+  get style(): IStyleRules {
+    return this._style
+  }
   set style(rules: IStyleRules) {
     this._log('LOG', 'Setting new style rules')
     this._style = rules

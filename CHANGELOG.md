@@ -1,12 +1,9 @@
-# CHANGELOG
+## 0.1.0-alpha.0
 
-## next
+Complete project overhaul!
 
-Complete project overhaul.
-
-### Changes
-
-- Converted to monorepo.
+- Photon Terminal has been converted to a monorepo
+- Photon Terminal now consists of packages that can be indivitually installed
 
 ---
 

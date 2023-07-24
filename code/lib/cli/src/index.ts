@@ -1,2 +1,2 @@
 export { Element, Style } from './classes'
-export { TColor as Color } from './typings/types'
+export type { TColor as Color } from './typings/types'
