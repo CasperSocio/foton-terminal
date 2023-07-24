@@ -1,0 +1,37 @@
+{
+  "name": "@photon-terminal/parser",
+  "version": "0.1.0-alpha.0",
+  "description": "The syntax analysis tool for Photon Terminal",
+  "author": "CasperSocio",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "homepage": "https://github.com/CasperSocio/photon-terminal/tree/main/lib/parser#readme",
+  "bugs": {
+    "url": "https://github.com/CasperSocio/photon-terminal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CasperSocio/photon-terminal.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "photon",
+    "terminal",
+    "syntax",
+    "anlysis",
+    "tool",
+    "parser"
+  ],
+  "dependencies": {
+    "@photon-terminal/lexer": "file:../lexer",
+    "@photon-terminal/shared": "file:../shared"
+  }
+}

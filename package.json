@@ -1,4 +1,8 @@
 {
   "name": "@photon-terminal/root",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "cd code && npm run build",
+    "test": "cd code && npm run test"
+  }
 }

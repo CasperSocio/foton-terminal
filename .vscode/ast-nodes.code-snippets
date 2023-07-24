@@ -1,0 +1,83 @@
+{
+  "AssignmentExpression": {
+    "description": "create AssignmentExpression node",
+    "scope": "javascript,typescript",
+    "prefix": "type:AssignmentExpression",
+    "body": [
+      "type: 'AssignmentExpression',",
+      "operator: '$1',",
+      "left: {",
+      "\t$2",
+      "},",
+      "right: {",
+      "\t$3",
+      "},"
+    ]
+  },
+  "BinaryExpression": {
+    "description": "create BinaryExpression node",
+    "scope": "javascript,typescript",
+    "prefix": "type:BinaryExpression",
+    "body": [
+      "type: 'BinaryExpression',",
+      "operator: '$1',",
+      "left: {",
+      "\t$2",
+      "},",
+      "right: {",
+      "\t$3",
+      "},"
+    ]
+  },
+  "BlockStatement": {
+    "description": "create BlockStatement node",
+    "scope": "javascript,typescript",
+    "prefix": "type:BlockStatement",
+    "body": ["type: 'BlockStatement',", "body: [$0],"]
+  },
+  "ExpressionStatement": {
+    "description": "create ExpressionStatement node",
+    "scope": "javascript,typescript",
+    "prefix": "type:ExpressionStatement",
+    "body": ["type: 'ExpressionStatement',", "expression: {", "\t$0", "},"]
+  },
+  "Identifier": {
+    "description": "create Identifier node",
+    "scope": "javascript,typescript",
+    "prefix": "type:Identifier",
+    "body": ["type: 'Identifier',", "name: '$0',"]
+  },
+  "IfStatement": {
+    "description": "Create IfStatement node",
+    "scope": "javascript,typescript",
+    "prefix": "type:IfStatement",
+    "body": [
+      "type: 'IfStatement',",
+      "test: {",
+      "\t$1",
+      "},",
+      "consequent: {",
+      "\t$2",
+      "},",
+      "alternate: null,"
+    ]
+  },
+  "NumericLiteral": {
+    "description": "create NumericLiteral node",
+    "scope": "javascript,typescript",
+    "prefix": "type:NumericLiteral",
+    "body": ["type: 'NumericLiteral',", "value: $0,"]
+  },
+  "Program": {
+    "description": "create Program node",
+    "scope": "javascript,typescript",
+    "prefix": "type:Program",
+    "body": ["type: 'Program',", "body: [$0],"]
+  },
+  "StringLiteral": {
+    "description": "Create StringLiteral node",
+    "scope": "javascript,typescript",
+    "prefix": "type:StringLiteral",
+    "body": ["type: 'StringLiteral',", "value: '$0',"]
+  }
+}
