@@ -4,5 +4,5 @@
     "outDir": "lib",
     "preserveConstEnums": true
   },
-  "include": ["src/index.ts"]
+  "include": ["src/**/*"]
 }
