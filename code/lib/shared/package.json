@@ -1,0 +1,30 @@
+{
+  "name": "@photon-terminal/shared",
+  "version": "0.1.0-alpha.0",
+  "description": "Shared resources for Photon Terminal",
+  "author": "CasperSocio",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "homepage": "https://github.com/CasperSocio/photon-terminal/tree/main/lib/shared#readme",
+  "bugs": {
+    "url": "https://github.com/CasperSocio/photon-terminal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CasperSocio/photon-terminal.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "photon",
+    "terminal",
+    "utils"
+  ]
+}
