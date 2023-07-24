@@ -1,9 +1,13 @@
-## 0.1.0-alpha.0
+## 0.1.0-alpha.0 (Jul 24, 2023)
 
 Complete project overhaul!
 
-- Photon Terminal has been converted to a monorepo
-- Photon Terminal now consists of packages that can be indivitually installed
+Photon Terminal now resides within a monorepo.
+
+- CLI: All existing code has been moved to code/lib/cli
+- Lexer: Added lexical analysis tool
+- Parser: Added syntax analysis tool
+- Shared: Added common utilities and resources
 
 ---
 

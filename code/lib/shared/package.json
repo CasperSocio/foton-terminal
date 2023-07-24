@@ -26,5 +26,8 @@
     "photon",
     "terminal",
     "utils"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

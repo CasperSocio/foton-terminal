@@ -33,5 +33,8 @@
   "dependencies": {
     "@photon-terminal/lexer": "file:../lexer",
     "@photon-terminal/shared": "file:../shared"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

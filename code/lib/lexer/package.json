@@ -29,5 +29,8 @@
     "lexical",
     "analysis",
     "tool"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

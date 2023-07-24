@@ -32,5 +32,8 @@
     "photon",
     "terminal",
     "text"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
