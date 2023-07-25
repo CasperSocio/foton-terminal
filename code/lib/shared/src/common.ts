@@ -23,6 +23,12 @@ export function toNumber(value: unknown): number {
   if (isNumber(value)) return value
   if (toString(value).match(/^(-?\d+(?:\.\d+)?)$/)) return Number(value)
 
+  const values = toString(value).split(/[.,]/)
+  if (values.length === 2) {
+    const dotSepValue = values.join('.')
+    if (dotSepValue.match(/^(-?\d+(?:\.\d+)?)$/)) return Number(dotSepValue)
+  }
+
   throw new SyntaxError(`${value} can not be converted into a valid number`)
 }
 

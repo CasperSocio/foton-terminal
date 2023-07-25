@@ -47,6 +47,10 @@ describe('toNumber()', () => {
     expect(toNumber('3.14')).toStrictEqual(3.14)
     expect(toNumber('-0.25')).toStrictEqual(-0.25)
   })
+  it('convers strings containing comma-separated decimals', () => {
+    expect(toNumber('3,14')).toStrictEqual(3.14)
+    expect(toNumber('-0,25')).toStrictEqual(-0.25)
+  })
   it('throws error on booleans', () => {
     expect(() => {
       toNumber(true)
