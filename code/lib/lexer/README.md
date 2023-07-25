@@ -1,14 +1,15 @@
-# Lexer
+# Photon Terminal Lexer
 
 The lexical analysis tool made for Photon Terminal.
 
-# Install
+## Install
 
-```
+```bash
 npm i @photon-terminal/lexer
 ```
 
-# Usage
+## Usage
+
 ```typescript
 import { Token, Tokenizer } from '@photon-terminal/lexer'
 

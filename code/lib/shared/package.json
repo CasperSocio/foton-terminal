@@ -2,7 +2,7 @@
   "name": "@photon-terminal/shared",
   "version": "0.1.0-alpha.0",
   "description": "Shared resources for Photon Terminal",
-  "author": "CasperSocio",
+  "author": "Casper Tollefsen <https://github.com/caspersocio>",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [

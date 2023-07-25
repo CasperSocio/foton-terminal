@@ -1,3 +1,11 @@
+## 0.1.0-alpha.1 (Jul 25, 2023)
+
+The following changes were made for all packages
+
+- Updated README.md
+- Updated LICENSE
+- Updated author in package.json
+
 ## 0.1.0-alpha.0 (Jul 24, 2023)
 
 Complete project overhaul!
